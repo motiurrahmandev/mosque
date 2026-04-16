@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Fajr",
+    "adhan": "04:30 AM",
+    "iqamah": "05:00 AM",
+    "status": "Upcoming",
+    "color": "bg-blue-400"
+  },
+  {
+    "id": 2,
+    "name": "Dhuhr",
+    "adhan": "01:00 PM",
+    "iqamah": "01:30 PM",
+    "status": "Scheduled",
+    "color": "bg-amber-500"
+  },
+  {
+    "id": 3,
+    "name": "Asr",
+    "adhan": "04:30 PM",
+    "iqamah": "05:00 PM",
+    "status": "Scheduled",
+    "color": "bg-orange-400"
+  },
+  {
+    "id": 4,
+    "name": "Maghrib",
+    "adhan": "06:30 PM",
+    "iqamah": "06:40 PM",
+    "status": "Scheduled",
+    "color": "bg-purple-400"
+  },
+  {
+    "id": 5,
+    "name": "Isha",
+    "adhan": "08:00 PM",
+    "iqamah": "08:15 PM",
+    "status": "Scheduled",
+    "color": "bg-indigo-600"
+  }
+]

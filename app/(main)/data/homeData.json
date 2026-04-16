@@ -1,0 +1,200 @@
+{
+  "hero": {
+    "title": "The Sacred Sanctuary",
+    "subtitle": "Welcome to our community",
+    "description": "A place where hearts find peace, spirits ascend, and the community flourishes in the light of faith.",
+    "bgImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAe-mBVi4eF22NXboESBJdtCXR2IOmuHBRr2yB3qwj9nZ5tEJQyTrHc4neEBCXhbhau_eNul67AdoIIgmgNkg9wKoTo9l_cedv0TBBOzeJl6EnXNXHoSlljakwpzpCJaiob8l4L47x0J_KGkQZkLNDqDzu_dOrMVD2UCfDhY-_5mEFkGQMI0be7-xhgaZW0jn-H-cIGfLNY2LPd_kKalrVbu9-s4sgWA_0MgYrjtDgV2qc0dr_lGLFqnMEAM1oZTdiBMmYaFEYHLsE",
+    "buttons": [
+      {
+        "label": "Give Zakat",
+        "url": "#donate",
+        "icon": "HeartHandshake",
+        "primary": true
+      },
+      {
+        "label": "View Services",
+        "url": "#services",
+        "icon": null,
+        "primary": false
+      }
+    ]
+  },
+  "prayerTimes": {
+    "title": "Prayer Times",
+    "description": "Join us for congregational prayers in the serenity of our main hall.",
+    "nextPrayer": {
+      "label": "Next Prayer",
+      "status": "Asr in 02:14:10"
+    },
+    "times": [
+      { "name": "Fajr", "azan": "04:12", "iqamah": "Iqamah: 04:30" },
+      { "name": "Dhuhr", "azan": "12:15", "iqamah": "Iqamah: 13:00" },
+      { "name": "Asr", "azan": "15:45", "iqamah": "Iqamah: 16:00", "isCurrent": true },
+      { "name": "Maghrib", "azan": "18:32", "iqamah": "Iqamah: 18:37" },
+      { "name": "Isha", "azan": "20:05", "iqamah": "Iqamah: 20:30" },
+      { "name": "Jummah", "azan": "13:15", "iqamah": "Friday Prayer", "isJummah": true }
+    ]
+  },
+  "about": {
+    "title": "Serving Faith & Humanity",
+    "overline": "Our Sacred Mission",
+    "quote": "\"Indeed, the mosques of Allah are only to be maintained by those who believe in Allah and the Last Day.\"",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuAU98dhzUJEjHs7mXZxLISDg4dznpDaydSApZoqipb0Nfd8yjvyUwlxQBYDSyyEbVmTq2jqI5M97UqGkKmQa-1nfnB_WiZfMBEnLSxFXIHW8zx4975HV20ghgBStycdKT_XK2WD7C7oO7GTFhAJKXOYtUzH-9qK6yOKLUYuaOmpwR1_3p8s5qdnhqF3kCSNXfT3jPp9JtNW4kBsj_W8_snom07Io_rmr8KU98MRMiox-UcE_8N-F_dmzy6StOYdvqT8ikUlXoxmJfw",
+    "features": [
+      {
+        "title": "Our Vision",
+        "description": "To be a beacon of spiritual guidance, fostering an inclusive community rooted in Islamic excellence and service to all creation.",
+        "icon": "Gem"
+      },
+      {
+        "title": "Our Values",
+        "description": "Sincerity (Ikhlas), Excellence (Ihsan), and Community (Ummah) guide every decision and service we provide to our congregation.",
+        "icon": "Network"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Providing essential spiritual and social services for every stage of life.",
+    "items": [
+      {
+        "title": "Islamic Education",
+        "description": "From weekend Madrasah to advanced Tafseer circles for adults.",
+        "icon": "BookOpen",
+        "linkText": "Learn More",
+        "linkIcon": "ArrowRight",
+        "size": "large"
+      },
+      {
+        "title": "Nikah Services",
+        "description": "Celebrate your sacred union in our beautiful hall with full legal and spiritual guidance.",
+        "icon": "Heart",
+        "linkText": "Book Inquiry",
+        "linkIcon": "CalendarRange",
+        "size": "medium"
+      },
+      {
+        "title": "Counseling",
+        "description": "Confidential spiritual and family counseling with our resident Imams.",
+        "icon": "Brain",
+        "size": "small"
+      },
+      {
+        "title": "Youth Hub",
+        "description": "Weekly activities, sports, and mentorship for the next generation.",
+        "icon": "Users",
+        "size": "small",
+        "theme": "secondary"
+      },
+      {
+        "title": "New Muslims",
+        "description": "Special programs and support networks for those new to the path of Islam.",
+        "icon": "UsersRound",
+        "size": "small"
+      }
+    ]
+  },
+  "team": {
+    "title": "The Sanctuary Team",
+    "description": "The dedicated individuals serving our sacred community.",
+    "members": [
+      {
+        "name": "Sheikh Ahmad Al-Farsi",
+        "role": "Chief Imam",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBFmzdj3mjoa1dNTgwLGu91vhP3yYxdBhqJ0luaCwzchbFt3qy_OWlnG2HjQQvUlu7rMpvN8DhtN66JdrNbE9i5zBJywrFlR-AuLC2sRdmyILcP5qF5ZoXKMqUiuxK-F4lUhyNUlLNkEixcecbqQ8VUDmOE1nRXHObBIjtnzzoYLhDbLeY53_RiJXFyvIb9CO1TOpRhaTY8oc87UObcLqmvciV6zlGdPYEka0nmBaw63MWLU6FW8cXkTN4Y4Ka1bN8b3Ol-4_NWdYg",
+        "contacts": [ { "icon": "Mail" }, { "icon": "Phone" } ]
+      },
+      {
+        "name": "Bilal Siddique",
+        "role": "Muazzin",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDiNxWh2wav_ZXhqHXJTYD472yIfEXnCoLdFKHjyzzBDBKcQo24m2oMm4Jju4IE_NCWJSFtLnAAjIpIM3EeHLinvJg6rLH-KFwJSjOVBSYool_aksnAoYgNCocIh1YZtk0Z_vOlpstclJgdC7ExzTVjFYVYVeOs7hq9f9Jn2znrpA7SFloq8uMbHxMH7XTPvYYeyiKuVenr0HGcmYCVU2OQ1MAEzBujWN2rfEx5ybx3cuK0bd2T2a-a78UN9sBp8S0YUigk67eToDA",
+        "contacts": [ { "icon": "Mail" } ]
+      },
+      {
+        "name": "Dr. Omar Malik",
+        "role": "President",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuBw5x1Plsnyfgv-l87gYc28Ni56ubDQDgGaJThVG1x6lrorXZlJsMboS4VhymEJ-tnVVQWqimhopc6vw2bliypb9zGu1X_zuKWyX7eZ-YpQgjeIWFAGwUKKegBUdsOz0NCtvRMQSA32V94tZL0WYobtrDUcykgJDkoJWKiMOBSHLu1YttmGXhZW9g0fwZBU5lW6eGqfh5bFXxBhTEWu1sBQ7EllJYcC3Bn2TiT9-bb6fBxZ5HVM1wGytXZIFgM-h2bRDqhauzLL0lk",
+        "contacts": [ { "icon": "Mail" } ]
+      },
+      {
+        "name": "Fatima Zahra",
+        "role": "Secretary",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCeBmHSL5Pz8fAJRYRsRa-XhLTR_7XW7K4XBvd-5owR1aSvxVNa_XvE67ImnNkWk8_ductnGKQHFNekOZtoFd2qujjlKDzY-csjV1Ds78Q-bHFEHsKhRpofqM9vS4F-pHBvGe7AotAMw--vNuNJvkbSEaM_EPaKWeHik-LLCZ3v82VKoS_hyvDL-52hk3Ses7Cjdj7x7OeLTIu0tolkMhU-0MX-k0bsjwmzUrKNlCjnpm9eOmo0Sef84NZd9gvCx5r2L6gzFSt3NA0",
+        "contacts": [ { "icon": "Mail" } ]
+      },
+      {
+        "name": "Yusuf Hussain",
+        "role": "Treasurer",
+        "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuC2lFlmI8jhXjaikMXInbb4F8S6ZoD3fA0sZ4eVAqt7EzphIQ5naIvUP9u0kb4LoGdJAu0Z-JDf6c1gm5nxVI0nI6c-RH4-RLmV9bFMlPgwUDgihveiu7AuvfrtgNgTFvJZAl-tX1Mcrl3QnMIjUzTQNIhZHUCXpDV2ypjxb3Zef7lBPotkCmlXmoPx_2LXf-yE-Vsi5ahWF_RZW3fl6dZ2Bg9QyVTB_TuxOb4VZCadMN4r6C4koajCA7Z9g4LHmgKkRRJBivCOJ4A",
+        "contacts": [ { "icon": "Mail" } ]
+      }
+    ]
+  },
+  "financial": {
+    "title": "Financial Transparency",
+    "description": "We believe in complete openness with the gifts Allah provides through our donors. Your contributions directly fuel our growth and services.",
+    "stats": [
+      { "label": "Total Revenue 2023", "value": "$452,000", "color": "primary" },
+      { "label": "Community Impact", "value": "24k+ Lives", "color": "secondary" }
+    ],
+    "bars": [
+      { "label": "Operational Costs", "percentage": 65, "color": "primary" },
+      { "label": "Community Aid", "percentage": 25, "color": "secondary" }
+    ],
+    "quarters": [
+      { "label": "Jan - Mar", "percentage": 80 },
+      { "label": "Apr - Jun", "percentage": 95 },
+      { "label": "Jul - Sep", "percentage": 70 },
+      { "label": "Oct - Dec", "percentage": 85 }
+    ]
+  },
+  "donation": {
+    "title": "Make a Donation",
+    "types": [
+      { "label": "Zakat", "icon": "Coins", "active": true },
+      { "label": "Sadaqah", "icon": "HeartHandshake", "active": false }
+    ],
+    "amountLabel": "Select Amount",
+    "amounts": ["£20", "£50", "£100", "£250", "Other"],
+    "defaultAmount": "£100",
+    "methodLabel": "Payment Method",
+    "methods": [
+      { "label": "Card", "icon": "CreditCard" },
+      { "label": "Bank Transfer", "icon": "Landmark" },
+      { "label": "GPay", "icon": "Wallet" }
+    ],
+    "buttonText": "Confirm Donation",
+    "buttonIcon": "ArrowRight",
+    "historyTitle": "Recent Impact",
+    "history": [
+      { "name": "Anonymous", "detail": "Donated £500 to Maintenance", "time": "2 hours ago", "icon": "History" },
+      { "name": "S. Ahmed", "detail": "Donated £50 to Youth Center", "time": "5 hours ago", "icon": "History" },
+      { "name": "M. Khan", "detail": "Donated £1,200 for Ramadan Prep", "time": "Yesterday", "icon": "History" }
+    ],
+    "pledge": {
+      "title": "Transparency Pledge",
+      "description": "100% of your donation goes directly to the selected cause. We provide quarterly audited reports to all donors.",
+      "linkText": "View 2023 Financials"
+    }
+  },
+  "contact": {
+    "title": "Connect With Us",
+    "methods": [
+      { "title": "Visit Us", "detail": "123 Sanctuary Way, Garden City, GC 45678", "icon": "MapPin" },
+      { "title": "Call Us", "detail": "+1 (555) 786-0900", "icon": "Phone" },
+      { "title": "Email Us", "detail": "salam@thesacredsanctuary.org", "icon": "Mail" }
+    ],
+    "mapImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBFFxcPt_COFRg2Lnt0xeAJVMb7qQpLHOs-fjWfUtlL5mEI2jeD6n3IGJrDC2X8G0QDOltkJFCTcz8JxOnQ2TzQJEqwkAarH19CMlyhoRUBhyi5MEbgvdIUGdbeGAX8p_KMd-E6LxMCHLuxcmnnVH6Au3T-BPXyiiORJIyyQnt1thRz1AHDoByNj1EnwhhMeKg93ExsrvnTF7flt8-W0kpluf7sOU8qWZCEAqmxru13y09FlDpj6mJUXbhQXPmS6UgBxq3FipRden8",
+    "form": {
+      "title": "Send a Message",
+      "subjects": [
+        "General Inquiry",
+        "Services Inquiry",
+        "Education Registration",
+        "Support & Counseling"
+      ],
+      "buttonText": "Send Message",
+      "buttonIcon": "Send"
+    }
+  }
+}
