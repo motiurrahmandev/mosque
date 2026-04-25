@@ -7,6 +7,7 @@ import HeroSection from "./components/home/HeroSection";
 import PrayerTimes from "./components/home/PrayerTimes";
 import ServicesSection from "./components/home/ServicesSection";
 import TeamSection from "./components/home/TeamSection";
+import EidAndJummahTime from "./components/prayer-times/EidAndJummahTime";
 
 export default function Home() {
   return (
@@ -17,6 +18,8 @@ export default function Home() {
         <HeroSection />
         { /* Prayer Times Section */}
         <PrayerTimes />
+        { /* Eid & Jummah Dynamic Components */}
+        <EidAndJummahTime />
         { /* About Section */}
         <AboutSection />
         { /* Services Section (Bento Grid) */}

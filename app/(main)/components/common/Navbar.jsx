@@ -1,42 +1,5 @@
-// import React from 'react'
-
-// function Navbar() {
-//     return (
-//         <header class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
-//             <nav class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
-//                 <div class="text-2xl font-serif italic text-green-900 dark:text-green-500">The Sacred Sanctuary</div>
-
-//                 <div class="hidden md:flex items-center space-gap-8 gap-x-8">
-//                     <a class="text-green-800 dark:text-green-400 border-b-2 border-amber-600 pb-1 font-serif" href="#">Home</a>
-//                     <a class="text-stone-600 dark:text-stone-400 hover:text-green-900 dark:hover:text-green-300 transition-all duration-300 font-serif" href="#prayer-times">Prayer Times</a>
-//                     <a class="text-stone-600 dark:text-stone-400 hover:text-green-900 dark:hover:text-green-300 transition-all duration-300 font-serif" href="#services">Services</a>
-//                     <a class="text-stone-600 dark:text-stone-400 hover:text-green-900 dark:hover:text-green-300 transition-all duration-300 font-serif" href="#events">Events</a>
-//                     <a class="bg-primary bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2 rounded-xl font-bold hover:opacity-80 transition-all duration-300" href="#donate">Donate</a>
-//                 </div>
-
-//                 <button class="md:hidden text-primary">
-//                     <span class="material-symbols-outlined">menu</span>
-//                 </button>
-//             </nav>
-//         </header>
-//     )
-// }
-
-// export default Navbar
-
 "use client";
 
-import {
-  CalendarDays,
-  ChevronRight,
-  Clock,
-  Heart,
-  LayoutGrid,
-  LogOut,
-  Menu,
-  User,
-  X,
-} from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -60,14 +23,14 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/", icon: <div className="w-0" /> },
-    { name: "About", href: "/about" },
-    { name: "Prayer Times", href: "/prayer-times", icon: <Clock size={16} /> },
-    { name: "Donations", href: "/donations", icon: <LayoutGrid size={16} /> },
+    { name: "হোম", href: "/", icon: "home" },
+    { name: "আমাদের সম্পর্কে", href: "/about", icon: "info" },
+    { name: "নামাজের সময়সূচী", href: "/prayer-times", icon: "schedule" },
+    { name: "অনুদান", href: "/donations", icon: "volunteer_activism" },
     {
-      name: "Programs & Events",
+      name: "প্রোগ্রাম ও ইভেন্ট",
       href: "/programs-and-events",
-      icon: <CalendarDays size={16} />,
+      icon: "event",
     },
   ];
 
@@ -86,11 +49,11 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
           <div className="w-10 h-10 rounded-full bg-[#154212] flex items-center justify-center text-white shadow-md shadow-[#154212]/20 group-hover:scale-105 transition-transform duration-300">
-            <span className="material-symbols-outlined text-xl">mosque</span>
+            <span className="material-symbols-outlined text-[20px]">mosque</span>
           </div>
 
           <span className="text-xl font-serif text-[#154212] hidden sm:block">
-            The Sacred Sanctuary
+            পবিত্র আশ্রয়স্থল
           </span>
         </Link>
 
@@ -113,7 +76,11 @@ export default function Navbar() {
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  {link.icon}
+                  {link.icon && (
+                    <span className="material-symbols-outlined text-[18px]">
+                      {link.icon}
+                    </span>
+                  )}
                   <span className="font-serif">{link.name}</span>
                 </span>
 
@@ -140,14 +107,16 @@ export default function Navbar() {
                   href="/dashboard"
                   className="bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white px-6 py-2.5 rounded-full font-bold hover:opacity-90 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#154212]/30"
                 >
-                  Dashboard
+                  ড্যাশবোর্ড
                 </Link>
                 <button
                   onClick={() => signOut()}
                   className="bg-[#e2e3df]/70 hover:bg-[#d9dad7] text-[#154212] p-2.5 rounded-full font-semibold transition-all duration-300 flex items-center shadow-sm"
-                  title="Sign Out"
+                  title="লগ আউট"
                 >
-                  <LogOut size={20} />
+                  <span className="material-symbols-outlined text-[20px]">
+                    logout
+                  </span>
                 </button>
               </div>
             ) : (
@@ -156,14 +125,16 @@ export default function Navbar() {
                   href="/login"
                   className="text-[#154212] font-semibold hover:bg-[#e2e3df]/50 px-5 py-2.5 rounded-full transition-all duration-300"
                 >
-                  Sign In
+                  লগইন
                 </Link>
                 <Link
                   href="/register"
                   className="bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white px-6 py-2.5 rounded-full font-bold hover:opacity-90 transition-all duration-300 flex items-center gap-2 shadow-lg shadow-[#154212]/30"
                 >
-                  <span>Sign Up</span>
-                  <User size={16} />
+                  <span>নিবন্ধন করুন</span>
+                  <span className="material-symbols-outlined text-[18px]">
+                    person_add
+                  </span>
                 </Link>
               </>
             )}
@@ -175,7 +146,9 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden flex items-center justify-center p-2 rounded-full bg-[#e2e3df]/70 hover:bg-[#d9dad7] transition-colors text-[#154212]"
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <span className="material-symbols-outlined text-[24px]">
+            {mobileMenuOpen ? "close" : "menu"}
+          </span>
         </button>
       </motion.nav>
 
@@ -193,7 +166,7 @@ export default function Navbar() {
               <div className="flex flex-col p-4 gap-1">
                 <div className="px-4 pt-2 pb-4">
                   <span className="text-xs font-bold uppercase tracking-widest text-[#72796e]">
-                    Navigation
+                    নেভিগেশন
                   </span>
                 </div>
 
@@ -210,14 +183,19 @@ export default function Navbar() {
                       className="flex items-center justify-between font-serif text-lg text-[#42493e] hover:text-[#154212] px-4 py-3 rounded-2xl hover:bg-[#e2e3df]/50 transition-all group"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="text-[#154212]/80">{link.icon}</div>
+                        <div className="text-[#154212]/80">
+                          {link.icon && (
+                            <span className="material-symbols-outlined text-[20px]">
+                              {link.icon}
+                            </span>
+                          )}
+                        </div>
                         {link.name}
                       </div>
 
-                      <ChevronRight
-                        size={18}
-                        className="opacity-0 group-hover:opacity-100 transition-opacity text-[#154212]"
-                      />
+                      <span className="material-symbols-outlined text-[18px] opacity-0 group-hover:opacity-100 transition-opacity text-[#154212]">
+                        chevron_right
+                      </span>
                     </Link>
                   </motion.div>
                 ))}
@@ -231,7 +209,7 @@ export default function Navbar() {
                         onClick={() => setMobileMenuOpen(false)}
                         className="bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white text-lg font-bold px-4 py-4 rounded-2xl flex items-center justify-center gap-2 shadow-xl shadow-[#154212]/20 mb-2"
                       >
-                        Dashboard
+                        ড্যাশবোর্ড
                       </Link>
                       <motion.button
                         whileTap={{ scale: 0.98 }}
@@ -241,8 +219,10 @@ export default function Navbar() {
                         }}
                         className="bg-[#e2e3df]/70 text-[#154212] text-lg font-bold px-4 py-4 rounded-2xl flex items-center justify-center gap-2 shadow-md w-full"
                       >
-                        <LogOut size={20} />
-                        Sign Out
+                        <span className="material-symbols-outlined text-[20px]">
+                          logout
+                        </span>
+                        লগ আউট
                       </motion.button>
                     </>
                   ) : (
@@ -252,15 +232,17 @@ export default function Navbar() {
                         onClick={() => setMobileMenuOpen(false)}
                         className="bg-[#e2e3df]/70 text-[#154212] text-lg font-bold px-4 py-3 rounded-2xl flex items-center justify-center gap-2 shadow-md mb-2"
                       >
-                        Sign In
+                        লগইন
                       </Link>
                       <Link
                         href="/register"
                         onClick={() => setMobileMenuOpen(false)}
                         className="bg-gradient-to-br from-[#154212] to-[#2d5a27] text-white text-lg font-bold px-4 py-4 rounded-2xl flex items-center justify-center gap-2 shadow-xl shadow-[#154212]/20"
                       >
-                        Sign Up
-                        <User size={20} />
+                        নিবন্ধন করুন
+                        <span className="material-symbols-outlined text-[20px]">
+                          person_add
+                        </span>
                       </Link>
                     </>
                   )}

@@ -2,7 +2,7 @@ import React from 'react'
 
 function DonationsSection() {
   return (
-   <section className="py-24 bg-primary relative overflow-hidden" id="donate">
+    <section className="py-24 bg-primary relative overflow-hidden" id="donate">
           <div className="absolute inset-0 asymmetric-pattern opacity-5" />
           <div className="container mx-auto px-8 relative z-10">
             <div className="max-w-5xl mx-auto bg-surface rounded-[3rem] p-12 lg:p-20 shadow-2xl overflow-hidden flex flex-col lg:flex-row gap-16">
@@ -15,14 +15,14 @@ function DonationsSection() {
                       <h5 className="font-bold text-primary">Sadaqah Jariyah</h5>
                       <p className="text-xs text-stone-500">Ongoing charity for mosque maintenance</p>
                     </div>
-                    <span className="material-symbols-outlined text-primary" data-weight="fill">radio_button_checked</span>
+                    <span className="material-symbols-outlined text-[24px] text-primary">check_circle</span>
                   </label>
                   <label className="p-6 rounded-2xl border border-outline-variant hover:bg-surface-container-low flex justify-between items-center cursor-pointer">
                     <div>
                       <h5 className="font-bold text-stone-800">Zakat Fund</h5>
                       <p className="text-xs text-stone-500">Dedicated distribution to those in need</p>
                     </div>
-                    <span className="material-symbols-outlined text-stone-300">radio_button_unchecked</span>
+                    <span className="material-symbols-outlined text-[24px] text-stone-300">radio_button_unchecked</span>
                   </label>
                 </div>
               </div>
@@ -46,7 +46,7 @@ function DonationsSection() {
                   Complete Donation
                 </button>
                 <p className="text-center text-xs text-stone-400 mt-6 flex items-center justify-center gap-1">
-                  <span className="material-symbols-outlined text-sm">lock</span> Secure payment processed via Sanctuary Pay
+                  <span className="material-symbols-outlined text-[12px]">lock</span> Secure payment processed via Sanctuary Pay
                 </p>
               </div>
             </div>

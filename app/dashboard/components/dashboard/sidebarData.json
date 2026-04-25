@@ -1,0 +1,27 @@
+[
+  {
+    "label": "ড্যাশবোর্ড",
+    "href": "/dashboard",
+    "icon": "dashboard"
+  },
+  {
+    "label": "নামাজের সময়সূচী",
+    "href": "/dashboard/prayer-time-mgnt",
+    "icon": "schedule"
+  },
+  {
+    "label": "পরিচালনা পর্ষদ",
+    "href": "/dashboard/team",
+    "icon": "groups"
+  },
+  {
+    "label": "অনুদান",
+    "href": "/dashboard/donations-mgnt",
+    "icon": "volunteer_activism"
+  },
+  {
+    "label": "আর্থিক হিসাব",
+    "href": "/dashboard/financial",
+    "icon": "payments"
+  }
+]

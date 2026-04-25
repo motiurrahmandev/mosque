@@ -4,7 +4,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
-import { Mail, Lock, LogIn, ArrowRight, Loader2 } from "lucide-react";
+
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -67,7 +67,7 @@ export default function LoginPage() {
               }}
               className="w-16 h-16 bg-gradient-to-br from-primary to-primary-container rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-primary/20 mb-6"
             >
-              <LogIn className="text-on-primary" size={32} />
+              <span className="material-symbols-outlined text-on-primary text-[32px]">login</span>
             </motion.div>
             <h1 className="text-3xl font-serif font-bold text-primary mb-2">
               Welcome Back
@@ -140,11 +140,11 @@ export default function LoginPage() {
               className="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-2xl font-bold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-primary/20 disabled:opacity-70 mt-6"
             >
               {loading ? (
-                <Loader2 className="animate-spin" size={20} />
+                <span className="material-symbols-outlined animate-spin text-[20px]">sync</span>
               ) : (
                 <>
                   <span>Sign In</span>
-                  <ArrowRight size={18} />
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </>
               )}
             </motion.button>

@@ -1,105 +1,170 @@
-import React from 'react'
+"use client";
+import React, { useState, useEffect } from 'react';
+
+// Helper to convert English digits to Bengali digits
+const toBnNum = (numStr) => {
+    if (!numStr) return "";
+    const bnDigits = {'0':'০', '1':'১', '2':'২', '3':'৩', '4':'৪', '5':'৫', '6':'৬', '7':'৭', '8':'৮', '9':'৯'};
+    return numStr.toString().replace(/[0-9]/g, w => bnDigits[w]);
+};
+
+const monthNamesBn = [
+    "জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন",
+    "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"
+];
+
+const hijriMonthNamesBn = [
+    "মহাররম", "সফর", "রবিউল আউয়াল", "রবিউস সানি", "জমাদিউল আউয়াল", "জমাদিউস সানি", 
+    "রজব", "শাবান", "রমজান", "শাওয়াল", "জিলকদ", "জিলহজ"
+];
+
+const dayNamesInBengali = ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহঃ', 'শুক্র', 'শনি'];
 
 function AnnualCanalder() {
+    const [currentDate, setCurrentDate] = useState(null);
+    const [calendarDays, setCalendarDays] = useState([]);
+
+    useEffect(() => {
+        setCurrentDate(new Date());
+    }, []);
+
+    useEffect(() => {
+        if (!currentDate) return;
+        const calculateCalendar = () => {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const firstDayOfMonth = new Date(year, month, 1);
+            const lastDayOfMonth = new Date(year, month + 1, 0);
+            
+            const days = [];
+            const startDayOfWeek = firstDayOfMonth.getDay(); // 0 is Sunday
+            
+            // Padding for previous month days
+            for (let i = 0; i < startDayOfWeek; i++) {
+                days.push({ empty: true });
+            }
+
+            const today = new Date();
+            const formatter = new Intl.DateTimeFormat('en-US-u-ca-islamic', {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric'
+            });
+            
+            for (let i = 1; i <= lastDayOfMonth.getDate(); i++) {
+                const dateObj = new Date(year, month, i);
+                
+                // Format Gregorian
+                const gregorianDay = toBnNum(i);
+                
+                // Format Hijri by extracting parts
+                const parts = formatter.formatToParts(dateObj);
+                const hijriDayPart = parts.find(p => p.type === 'day');
+                const hijriDayStr = hijriDayPart ? toBnNum(hijriDayPart.value) : "";
+                
+                const isToday = (today.getDate() === i && today.getMonth() === month && today.getFullYear() === year);
+
+                days.push({
+                    empty: false,
+                    date: dateObj,
+                    gregorianDay,
+                    hijriDayStr,
+                    isToday
+                });
+            }
+            setCalendarDays(days);
+        };
+        
+        calculateCalendar();
+    }, [currentDate]);
+
+    if (!currentDate) return <div className="animate-pulse bg-surface-container-low h-[40rem] rounded-[2.5rem] w-full max-w-5xl mx-auto mb-20"></div>;
+
+    const changeMonth = (offset) => {
+        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + offset, 1));
+    };
+
+    const getHijriMonthYear = () => {
+        try {
+            const midMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 15);
+            const formatter = new Intl.DateTimeFormat('en-US-u-ca-islamic', {
+                month: 'numeric',
+                year: 'numeric'
+            });
+            const parts = formatter.formatToParts(midMonth);
+            const m = parts.find(p => p.type === 'month');
+            const y = parts.find(p => p.type === 'year');
+            
+            if (m && y) {
+                // 'en-US-u-ca-islamic' numeric month usually returns 1-12
+                const monthIndex = parseInt(m.value) - 1;
+                const hijriName = hijriMonthNamesBn[monthIndex] || "";
+                return `${hijriName} ${toBnNum(y.value)}`;
+            }
+            return "";
+        } catch {
+            return "";
+        }
+    };
+
     return (
-        <section className="bg-surface-container-low rounded-[2.5rem] p-8 lg:p-12">
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+        <section className="bg-surface-container-lowest/50 rounded-[2.5rem] p-4 lg:p-10 mb-20 max-w-7xl mx-auto">
+            {/* Header Area */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 bg-white p-6 lg:px-10 rounded-[2rem] shadow-sm border border-surface-variant/20">
                 <div>
-                    <h2 className="font-headline text-3xl text-primary font-bold">Annual Timetable</h2>
-                    <p className="text-on-surface-variant mt-2">Adjusted for local astronomical calculations.</p>
+                    <h2 className="font-serif text-3xl md:text-4xl text-primary mb-2">মাসিক ক্যালেন্ডার</h2>
+                    <p className="text-stone-500 font-body">ইংরেজি ও আরবি তারিখ সমন্বিত</p>
                 </div>
-                <div className="flex flex-wrap gap-4">
-                    <div className="relative">
-                        <select className="appearance-none bg-surface-container-lowest border-none rounded-xl px-6 py-3 pr-12 text-sm font-bold text-on-surface-variant focus:ring-2 focus:ring-secondary">
-                            <option>October 2024</option>
-                            <option>November 2024</option>
-                            <option>December 2024</option>
-                        </select>
-                        <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+                <div className="flex items-center gap-2">
+                    <button onClick={() => changeMonth(-1)} className="p-3 rounded-xl hover:bg-surface-container-lowest transition-colors flex items-center justify-center">
+                        <span className="material-symbols-outlined !text-[20px] text-on-surface-variant">chevron_left</span>
+                    </button>
+                    <div className="text-center min-w-[200px] px-2">
+                        <div className="font-bold text-xl lg:text-2xl text-primary font-serif">
+                            {monthNamesBn[currentDate.getMonth()]} {toBnNum(currentDate.getFullYear())}
+                        </div>
+                        <div className="text-sm text-secondary font-medium tracking-wide mt-1">
+                            {getHijriMonthYear()}
+                        </div>
                     </div>
-                    <button className="bg-surface-container-lowest p-3 rounded-xl hover:bg-white transition-colors">
-                        <span className="material-symbols-outlined text-on-surface-variant">download</span>
-                    </button>
-                    <button className="bg-surface-container-lowest p-3 rounded-xl hover:bg-white transition-colors">
-                        <span className="material-symbols-outlined text-on-surface-variant">print</span>
+                    <button onClick={() => changeMonth(1)} className="p-3 rounded-xl hover:bg-surface-container-lowest transition-colors flex items-center justify-center">
+                        <span className="material-symbols-outlined !text-[20px] text-on-surface-variant">chevron_right</span>
                     </button>
                 </div>
             </div>
-            <div className="overflow-x-auto">
-                <table className="w-full text-left">
-                    <thead>
-                        <tr className="text-on-surface-variant text-xs font-bold uppercase tracking-[0.15em] border-b border-surface-variant/50">
-                            <th className="pb-6 px-4">Date</th>
-                            <th className="pb-6 px-4">Day</th>
-                            <th className="pb-6 px-4">Fajr</th>
-                            <th className="pb-6 px-4">Sunrise</th>
-                            <th className="pb-6 px-4">Dhuhr</th>
-                            <th className="pb-6 px-4">Asr</th>
-                            <th className="pb-6 px-4">Maghrib</th>
-                            <th className="pb-6 px-4">Isha</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-surface-variant/20">
-                        <tr className="hover:bg-white/50 transition-colors">
-                            <td className="py-5 px-4 font-bold">Oct 24</td>
-                            <td className="py-5 px-4 text-on-surface-variant">Thu</td>
-                            <td className="py-5 px-4">05:12</td>
-                            <td className="py-5 px-4">06:45</td>
-                            <td className="py-5 px-4">01:05</td>
-                            <td className="py-5 px-4">03:45</td>
-                            <td className="py-5 px-4">06:02</td>
-                            <td className="py-5 px-4">07:30</td>
-                        </tr>
-                        <tr className="bg-primary/5">
-                            <td className="py-5 px-4 font-bold text-primary">Oct 25</td>
-                            <td className="py-5 px-4 text-primary font-medium">Fri</td>
-                            <td className="py-5 px-4 text-primary font-bold">05:13</td>
-                            <td className="py-5 px-4 text-primary font-bold">06:47</td>
-                            <td className="py-5 px-4 text-primary font-bold">01:05</td>
-                            <td className="py-5 px-4 text-primary font-bold">03:44</td>
-                            <td className="py-5 px-4 text-primary font-bold">06:01</td>
-                            <td className="py-5 px-4 text-primary font-bold">07:29</td>
-                        </tr>
-                        <tr className="hover:bg-white/50 transition-colors">
-                            <td className="py-5 px-4 font-bold">Oct 26</td>
-                            <td className="py-5 px-4 text-on-surface-variant">Sat</td>
-                            <td className="py-5 px-4">05:14</td>
-                            <td className="py-5 px-4">06:48</td>
-                            <td className="py-5 px-4">01:05</td>
-                            <td className="py-5 px-4">03:43</td>
-                            <td className="py-5 px-4">05:59</td>
-                            <td className="py-5 px-4">07:27</td>
-                        </tr>
-                        <tr className="hover:bg-white/50 transition-colors">
-                            <td className="py-5 px-4 font-bold">Oct 27</td>
-                            <td className="py-5 px-4 text-on-surface-variant">Sun</td>
-                            <td className="py-5 px-4">05:16</td>
-                            <td className="py-5 px-4">06:49</td>
-                            <td className="py-5 px-4">01:05</td>
-                            <td className="py-5 px-4">03:42</td>
-                            <td className="py-5 px-4">05:58</td>
-                            <td className="py-5 px-4">07:26</td>
-                        </tr>
-                        <tr className="hover:bg-white/50 transition-colors">
-                            <td className="py-5 px-4 font-bold">Oct 28</td>
-                            <td className="py-5 px-4 text-on-surface-variant">Mon</td>
-                            <td className="py-5 px-4">05:17</td>
-                            <td className="py-5 px-4">06:51</td>
-                            <td className="py-5 px-4">01:05</td>
-                            <td className="py-5 px-4">03:41</td>
-                            <td className="py-5 px-4">05:56</td>
-                            <td className="py-5 px-4">07:25</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            {/* Calendar Grid - Responsive Card Style */}
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                {/* Days Cells arranged by weeks on desktop, list on mobile */}
+                {calendarDays.map((day, idx) => {
+                    const dayName = dayNamesInBengali[idx % 7];
+                    
+                    if (day.empty) {
+                        return <div key={`empty-${idx}`} className="hidden lg:block"></div>;
+                    }
+
+                    if (day.isToday) {
+                        return (
+                            <div key={idx} className="bg-primary-container p-6 lg:p-8 rounded-3xl text-center border border-primary/20 ring-4 ring-secondary-container/30 transition-transform hover:scale-[1.02] flex flex-col items-center justify-center">
+                                <span className="text-on-primary-container/70 font-bold tracking-tighter uppercase text-xs lg:text-sm mb-4 block">{dayName}</span>
+                                <div className="text-3xl lg:text-4xl font-serif text-white mb-2">{day.gregorianDay}</div>
+                                <span className="text-sm text-white/70 italic font-medium">{day.hijriDayStr}</span>
+                            </div>
+                        )
+                    }
+
+                    return (
+                        <div key={idx} className="bg-surface-container-lowest p-6 lg:p-8 rounded-3xl text-center border border-outline-variant/10 hover:border-secondary transition-colors group flex flex-col items-center justify-center">
+                             <span className="text-stone-400 font-bold tracking-tighter uppercase text-xs lg:text-sm mb-4 block">{dayName}</span>
+                            <div className="text-3xl lg:text-4xl font-serif text-primary mb-2 transition-transform group-hover:scale-110">{day.gregorianDay}</div>
+                            <span className="text-sm text-stone-500 italic font-medium">{day.hijriDayStr}</span>
+                        </div>
+                    );
+                })}
             </div>
-            <div className="mt-8 flex justify-center">
-                <button className="text-primary font-bold hover:underline underline-offset-4 flex items-center gap-2">
-                    Show full month <span className="material-symbols-outlined">expand_more</span>
-                </button>
-            </div>
+            
         </section>
-    )
+    );
 }
 
-export default AnnualCanalder
+export default AnnualCanalder;

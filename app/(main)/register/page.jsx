@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
-import { User, Mail, Lock, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+
 import Link from "next/link";
 
 export default function RegisterPage() {
@@ -56,7 +56,7 @@ export default function RegisterPage() {
             animate={{ scale: 1 }}
             className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6"
           >
-            <CheckCircle2 className="text-primary" size={40} />
+            <span className="material-symbols-outlined text-primary text-[40px]">check_circle</span>
           </motion.div>
           <h2 className="text-3xl font-serif font-bold text-primary mb-4">
             Registration Successful!
@@ -97,7 +97,7 @@ export default function RegisterPage() {
               }}
               className="w-16 h-16 bg-gradient-to-br from-primary to-primary-container rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-primary/20 mb-6"
             >
-              <User className="text-on-primary" size={32} />
+              <span className="material-symbols-outlined text-on-primary text-[32px]">person</span>
             </motion.div>
             <h1 className="text-3xl font-serif font-bold text-primary mb-2">
               Create an Account
@@ -186,11 +186,11 @@ export default function RegisterPage() {
               className="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-2xl font-bold hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 shadow-xl shadow-primary/20 disabled:opacity-70 mt-6"
             >
               {loading ? (
-                <Loader2 className="animate-spin" size={20} />
+                <span className="material-symbols-outlined animate-spin text-[20px]">sync</span>
               ) : (
                 <>
                   <span>Sign Up</span>
-                  <ArrowRight size={18} />
+                  <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
                 </>
               )}
             </motion.button>

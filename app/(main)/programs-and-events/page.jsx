@@ -1,17 +1,18 @@
 import React from 'react'
 
+
 function ProgramsAndEvents() {
   return (
     <main className="pt-32 pb-12">
       { /* Hero Section: Editorial Asymmetry */}
       <section className="max-w-7xl mx-auto px-8 mb-24 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
         <div className="md:col-span-7">
-          <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-4 block">Nurturing Souls</span>
-          <h1 className="text-6xl md:text-7xl font-headline font-bold text-primary leading-tight mb-8">Sacred Knowledge <br />& Community Spirit</h1>
-          <p className="text-xl text-on-surface-variant max-w-lg mb-12">Join our diverse programs designed to elevate the mind, nourish the heart, and strengthen our collective bond in the light of the Quran.</p>
+          <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-4 block">আত্মার পবিত্রতা</span>
+          <h1 className="text-6xl md:text-7xl font-headline font-bold text-primary leading-tight mb-8">পবিত্র জ্ঞান <br />ও সম্প্রীতি</h1>
+          <p className="text-xl text-on-surface-variant max-w-lg mb-12">কুরআনের আলোকে মনকে উন্নত করতে, হৃদয়কে আলোকিত করতে এবং আমাদের ঐক্য মজবুত করতে আমাদের বিভিন্ন কার্যক্রমে যোগ দিন।</p>
           <div className="flex gap-4">
-            <button className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold shadow-ambient transition-transform hover:scale-105">Browse All Classes</button>
-            <button className="text-primary font-bold px-8 py-4 rounded-xl border border-outline-variant hover:bg-surface-container-low transition-colors">Event Calendar</button>
+            <button className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-4 rounded-xl font-bold shadow-ambient transition-transform hover:scale-105">সব ক্লাস দেখুন</button>
+            <button className="text-primary font-bold px-8 py-4 rounded-xl border border-outline-variant hover:bg-surface-container-low transition-colors">ইভেন্ট ক্যালেন্ডার</button>
           </div>
         </div>
         <div className="md:col-span-5 relative">
@@ -28,34 +29,34 @@ function ProgramsAndEvents() {
           <div className="relative z-10 p-12 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center gap-3 text-secondary-container mb-6">
-                <span className="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
-                <span className="font-bold tracking-widest uppercase text-sm">Friday Khutbah • This Week</span>
+                <span className="material-symbols-outlined text-[20px]">calendar_month</span>
+                <span className="font-bold tracking-widest uppercase text-sm">জুম্মার খুতবা • এই সপ্তাহ</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-headline text-on-primary font-bold mb-6">Patience as a Path to Divine Proximity</h2>
-              <p className="text-on-primary-container text-lg mb-8 leading-relaxed">Join us this Friday as Imam Yusuf explores the spiritual depths of Sabr and its transformative power in the modern era.</p>
+              <h2 className="text-4xl md:text-5xl font-headline text-on-primary font-bold mb-6">সবর: আল্লাহর নৈকট্য লাভের উপায়</h2>
+              <p className="text-on-primary-container text-lg mb-8 leading-relaxed">এই শুক্রবার ইমাম ইউসুফের সাথে যোগ দিন এবং আধুনিক যুগে সবরের গভীরতা ও এর আধ্যাত্মিক শক্তি সম্পর্কে জানুন।</p>
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
-                    <span className="material-symbols-outlined" data-icon="person">person</span>
+                    <span className="material-symbols-outlined text-[24px]">person</span>
                   </div>
                   <div className="text-on-primary">
-                    <p className="font-bold">Imam Yusuf Al-Amin</p>
-                    <p className="text-sm opacity-80">Resident Scholar</p>
+                    <p className="font-bold">ইমাম ইউসুফ আল-আমিন</p>
+                    <p className="text-sm opacity-80">আবাসিক স্কলার</p>
                   </div>
                 </div>
                 <div className="h-12 w-px bg-on-primary-container/30" />
                 <div className="text-on-primary">
-                  <p className="font-bold">1:30 PM</p>
-                  <p className="text-sm opacity-80">First Jama'ah</p>
+                  <p className="font-bold">০১:৩০ পিএম</p>
+                  <p className="text-sm opacity-80">প্রথম জামাত</p>
                 </div>
               </div>
             </div>
             <div className="flex justify-end">
               <div className="glass p-8 rounded-3xl border border-white/20 w-full max-w-xs text-primary">
-                <h3 className="font-headline text-2xl font-bold mb-4">Live Stream</h3>
-                <p className="text-sm mb-6 opacity-80">Can't join us in person? Access the spiritual benefits from anywhere.</p>
+                <h3 className="font-headline text-2xl font-bold mb-4">সরাসরি সম্প্রচার</h3>
+                <p className="text-sm mb-6 opacity-80">স্বশরীরে আসতে পারছেন না? যেকোনো জায়গা থেকে খুতবার সুবিধা নিন।</p>
                 <button className="w-full bg-primary text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined" data-icon="play_circle">play_circle</span> Watch Live
+                  <span className="material-symbols-outlined text-[20px]">play_circle</span> সরাসরি দেখুন
                 </button>
               </div>
             </div>
@@ -66,25 +67,25 @@ function ProgramsAndEvents() {
       <section className="max-w-7xl mx-auto px-8 mb-24">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-2 block">Learning Streams</span>
-            <h2 className="text-4xl font-headline font-bold text-primary">Nurturing Generations</h2>
+            <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-2 block">শিক্ষণ কার্যক্রম</span>
+            <h2 className="text-4xl font-headline font-bold text-primary">প্রজন্মের বিকাশ</h2>
           </div>
-          <p className="text-on-surface-variant max-w-xs text-sm italic">"The best of you are those who learn the Quran and teach it."</p>
+          <p className="text-on-surface-variant max-w-xs text-sm italic">"তোমাদের মধ্যে সর্বোত্তম সে, যে কুরআন শেখে এবং অন্যকে শেখায়।"</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6">
           { /* Children's Learning */}
           <div className="md:col-span-2 lg:col-span-3 bg-surface-container-low rounded-[2rem] p-8 flex flex-col justify-between group hover:bg-white hover:shadow-ambient transition-all">
             <div>
               <div className="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary mb-6">
-                <span className="material-symbols-outlined" data-icon="child_care">child_care</span>
+                <span className="material-symbols-outlined text-[32px]">child_care</span>
               </div>
-              <h3 className="text-3xl font-headline font-bold mb-4">Children's Madrasah</h3>
-              <p className="text-on-surface-variant mb-8">Foundational Islamic education for ages 5-13, focusing on character (Akhlaq) and Quranic recitation in a fun environment.</p>
+              <h3 className="text-3xl font-headline font-bold mb-4">শিশুদের মাদরাসা</h3>
+              <p className="text-on-surface-variant mb-8">৫-১৩ বছর বয়সের শিশুদের জন্য আনন্দদায়ক পরিবেশে আখলাক (চরিত্র) এবং কুরআন তিলাওয়াতের মৌলিক ইসলামী শিক্ষা।</p>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm font-bold text-primary">Enrolling Now</span>
+              <span className="text-sm font-bold text-primary">ভর্তি চলছে</span>
               <button className="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
-                <span className="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+                <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
               </button>
             </div>
           </div>
@@ -93,30 +94,30 @@ function ProgramsAndEvents() {
             <div className="absolute -right-12 -top-12 w-48 h-48 bg-white/5 rounded-full blur-3xl" />
             <div className="relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
-                <span className="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                <span className="material-symbols-outlined text-[32px]">menu_book</span>
               </div>
-              <h3 className="text-3xl font-headline font-bold mb-4">Adult Quran Studies</h3>
-              <p className="text-on-primary-container/80 mb-8">Tajweed mastery and Tafseer sessions designed for busy professionals. Evening and weekend cohorts available.</p>
+              <h3 className="text-3xl font-headline font-bold mb-4">বড়দের জন্য কুরআন শিক্ষা</h3>
+              <p className="text-on-primary-container/80 mb-8">ব্যস্ত পেশাদারদের জন্য তাজবিদ ও তাফসির ক্লাস। সন্ধ্যা ও সাপ্তাহিক ছুটির দিনের ব্যাচ রয়েছে।</p>
               <div className="flex gap-4">
-                <span className="px-4 py-2 bg-white/10 rounded-full text-xs font-bold">Beginner</span>
-                <span className="px-4 py-2 bg-white/10 rounded-full text-xs font-bold">Intermediate</span>
-                <span className="px-4 py-2 bg-white/10 rounded-full text-xs font-bold">Advanced</span>
+                <span className="px-4 py-2 bg-white/10 rounded-full text-xs font-bold">প্রাথমিক</span>
+                <span className="px-4 py-2 bg-white/10 rounded-full text-xs font-bold">মাধ্যমিক</span>
+                <span className="px-4 py-2 bg-white/10 rounded-full text-xs font-bold">উচ্চতর</span>
               </div>
             </div>
           </div>
           { /* Community Education */}
           <div className="md:col-span-4 lg:col-span-4 bg-surface-container-highest rounded-[2rem] p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-2xl font-headline font-bold mb-4">Community Seminars</h3>
-              <p className="text-on-surface-variant mb-6">Monthly workshops covering contemporary issues, financial literacy (Zakat & Shariah finance), and mental well-being.</p>
+              <h3 className="text-2xl font-headline font-bold mb-4">সামাজিক সেমিনার</h3>
+              <p className="text-on-surface-variant mb-6">সমসাময়িক সমস্যা, যাকাত ও ইসলামী ফাইন্যান্স এবং মানসিক স্বাস্থ্য নিয়ে মাসিক কর্মশালা।</p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3 text-sm font-medium">
-                  <span className="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
-                  Guest Lecturers
+                  <span className="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+                  আমন্ত্রিত স্কলার
                 </li>
                 <li className="flex items-center gap-3 text-sm font-medium">
-                  <span className="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
-                  Interactive Q&A
+                  <span className="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+                  প্রশ্নোত্তর পর্ব
                 </li>
               </ul>
             </div>
@@ -126,73 +127,73 @@ function ProgramsAndEvents() {
           </div>
           { /* Quick Action Stats */}
           <div className="md:col-span-2 lg:col-span-2 bg-secondary-container rounded-[2rem] p-8 flex flex-col justify-center text-on-secondary-container text-center">
-            <span className="text-4xl font-headline font-bold mb-2">450+</span>
-            <p className="text-sm font-bold uppercase tracking-widest opacity-70 mb-6">Active Students</p>
+            <span className="text-4xl font-headline font-bold mb-2">৪৫০+</span>
+            <p className="text-sm font-bold uppercase tracking-widest opacity-70 mb-6">সক্রিয় ছাত্র-ছাত্রী</p>
             <div className="h-px bg-on-secondary-container/20 w-full mb-6" />
-            <span className="text-4xl font-headline font-bold mb-2">12</span>
-            <p className="text-sm font-bold uppercase tracking-widest opacity-70">Dedicated Instructors</p>
+            <span className="text-4xl font-headline font-bold mb-2">১২</span>
+            <p className="text-sm font-bold uppercase tracking-widest opacity-70">নিবেদিতপ্রাণ শিক্ষক</p>
           </div>
         </div>
       </section>
       { /* Upcoming Events: Clean Horizontal Cards */}
       <section className="max-w-7xl mx-auto px-8 mb-24">
         <div className="mb-12">
-          <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-2 block">Mark Your Calendar</span>
-          <h2 className="text-4xl font-headline font-bold text-primary">Upcoming Community Events</h2>
+          <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-2 block">দিনলিপি</span>
+          <h2 className="text-4xl font-headline font-bold text-primary">আসন্ন সামাজিক কার্যক্রম</h2>
         </div>
         <div className="space-y-6">
           { /* Event 1 */}
           <div className="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container-high transition-colors group cursor-pointer">
             <div className="w-full md:w-32 h-32 bg-white rounded-2xl flex flex-col items-center justify-center shadow-sm">
-              <span className="text-3xl font-headline font-bold text-primary">15</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">October</span>
+              <span className="text-3xl font-headline font-bold text-primary">১৫</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">অক্টোবর</span>
             </div>
             <div className="flex-grow">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">Youth Social</span>
-              <h3 className="text-xl font-headline font-bold mb-1">Youth Soccer & Spiritual Circle</h3>
+              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">যুব নেটওয়ার্ক</span>
+              <h3 className="text-xl font-headline font-bold mb-1">ইয়ুথ সকার এবং আধ্যাত্মিক মজলিস</h3>
               <p className="text-on-surface-variant text-sm flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
-                Community Sports Center • 4:00 PM - 7:00 PM
+                <span className="material-symbols-outlined text-[16px]">location_on</span>
+                কমিউনিটি স্পোর্টস সেন্টার • বিকাল ৪:০০ - ৭:০০
               </p>
             </div>
             <div className="w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">Register</button>
+              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">নিবন্ধন করুন</button>
             </div>
           </div>
           { /* Event 2 */}
           <div className="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container-high transition-colors group cursor-pointer">
             <div className="w-full md:w-32 h-32 bg-white rounded-2xl flex flex-col items-center justify-center shadow-sm">
-              <span className="text-3xl font-headline font-bold text-primary">22</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">October</span>
+              <span className="text-3xl font-headline font-bold text-primary">২২</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">অক্টোবর</span>
             </div>
             <div className="flex-grow">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">Community Kitchen</span>
-              <h3 className="text-xl font-headline font-bold mb-1">Serving Our Neighbors Meal Drive</h3>
+              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">কমিউনিটি কিচেন</span>
+              <h3 className="text-xl font-headline font-bold mb-1">প্রতিবেশীর জন্য খাবার বিতরণ</h3>
               <p className="text-on-surface-variant text-sm flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
-                Sanctuary Kitchen • 10:00 AM onwards
+                <span className="material-symbols-outlined text-[16px]">location_on</span>
+                মসজিদের রান্নাঘর • সকাল ১০:০০ থেকে
               </p>
             </div>
             <div className="w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">Volunteer</button>
+              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">ভলান্টিয়ার হোন</button>
             </div>
           </div>
           { /* Event 3 */}
           <div className="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container-high transition-colors group cursor-pointer">
             <div className="w-full md:w-32 h-32 bg-white rounded-2xl flex flex-col items-center justify-center shadow-sm">
-              <span className="text-3xl font-headline font-bold text-primary">02</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">November</span>
+              <span className="text-3xl font-headline font-bold text-primary">০২</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">নভেম্বর</span>
             </div>
             <div className="flex-grow">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">Sisters Network</span>
-              <h3 className="text-xl font-headline font-bold mb-1">Quranic Arabic for Beginners Workshop</h3>
+              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">বোনদের ফোরাম</span>
+              <h3 className="text-xl font-headline font-bold mb-1">শিক্ষানবিশদের জন্য আরবি কর্মশালা</h3>
               <p className="text-on-surface-variant text-sm flex items-center gap-2">
-                <span className="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
-                Seminar Room A • 6:30 PM - 8:30 PM
+                <span className="material-symbols-outlined text-[16px]">location_on</span>
+                সেমিনার রুম এ • সন্ধ্যা ৬:৩০ - রাত ৮:৩০
               </p>
             </div>
             <div className="w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">Book Spot</button>
+              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">বুকিং দিন</button>
             </div>
           </div>
         </div>
@@ -202,11 +203,11 @@ function ProgramsAndEvents() {
         <div className="bg-stone-100 rounded-[3rem] p-12 text-center relative overflow-hidden">
           <div className="absolute inset-0 pattern-overlay opacity-[0.03]" />
           <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary mb-4">Stay Connected with the Sanctuary</h2>
-            <p className="text-on-surface-variant mb-8 italic">Receive weekly updates on classes, events, and community news directly in your inbox.</p>
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary mb-4">আমাদের সাথে যুক্ত থাকুন</h2>
+            <p className="text-on-surface-variant mb-8 italic">প্রতি সপ্তাহে ইমেইলে আমাদের সকল ক্লাস, ইভেন্ট এবং খবর পান।</p>
             <form className="flex flex-col md:flex-row gap-4">
-              <input className="flex-grow px-6 py-4 rounded-xl border-none bg-white focus:ring-2 focus:ring-secondary text-on-surface" placeholder="Your email address" type="email" />
-              <button className="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold hover:opacity-90 transition-opacity" type="submit">Join Mailing List</button>
+              <input className="flex-grow px-6 py-4 rounded-xl border-none bg-white focus:ring-2 focus:ring-secondary text-on-surface" placeholder="আপনার ইমেইল এড্রেস" type="email" />
+              <button className="bg-primary text-on-primary px-10 py-4 rounded-xl font-bold hover:opacity-90 transition-opacity" type="submit">সাবস্ক্রাইব করুন</button>
             </form>
           </div>
         </div>

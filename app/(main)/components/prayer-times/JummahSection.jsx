@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function JummahSection() {
     return (
         <div className="lg:col-span-2 bg-surface-container-lowest p-10 rounded-[2.5rem] ambient-shadow relative overflow-hidden">
@@ -31,7 +32,7 @@ function JummahSection() {
                     </div>
                 </div>
                 <div className="mt-12 p-6 bg-surface-container-low rounded-2xl flex items-center gap-4">
-                    <span className="material-symbols-outlined text-secondary text-3xl">info</span>
+                    <span className="material-symbols-outlined !text-[32px] text-secondary">info</span>
                     <p className="text-sm text-on-surface-variant">Please arrive 15 minutes early as parking fills up quickly during the second service.</p>
                 </div>
             </div>

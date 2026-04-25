@@ -13,11 +13,11 @@ function AboutHero() {
             </div>
             <div className="relative z-10 max-w-7xl mx-auto px-8">
                 <span className="inline-block text-secondary-fixed bg-primary-container px-4 py-1 rounded-full text-sm font-bold tracking-widest mb-4 uppercase">
-                    Est. 1924
+                    স্থাপিত ১৯২৪
                 </span>
                 <h1 className="text-6xl md:text-8xl font-headline text-white leading-tight max-w-3xl">
-                    A Legacy of <br />
-                    <span className="italic text-secondary-fixed">Spiritual Grace</span>
+                    আধ্যাত্মিক কৃপার <br />
+                    <span className="italic text-secondary-fixed">এক অনন্য ঐতিহ্য</span>
                 </h1>
             </div>
         </section>

@@ -5,17 +5,12 @@ function DonationsSummary() {
       <div className="bg-primary-container text-on-primary p-6 rounded-2xl relative overflow-hidden group shadow-xl shadow-primary/5">
         <div className="relative z-10">
           <p className="text-on-primary-container/80 text-xs font-bold uppercase tracking-widest mb-1">
-            Total Lifetime Donations
+            মোট আজীবন ডোনেশন
           </p>
           <h3 className="text-4xl font-bold font-headline mb-4">$1.2M</h3>
           <div className="flex items-center gap-2 text-on-primary-container text-sm font-semibold">
-            <span
-              className="material-symbols-outlined text-green-400"
-              data-icon="trending_up"
-            >
-              trending_up
-            </span>
-            <span>+12.5% from last year</span>
+            <span className="material-symbols-outlined text-[20px] text-green-400">trending_up</span>
+            <span>গত বছর থেকে +১২.৫%</span>
           </div>
         </div>
         {/* Subtle Growth Chart Visual */}
@@ -32,21 +27,15 @@ function DonationsSummary() {
       {/* Active Campaigns Summary */}
       <div className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 right-0 p-4">
-          <span
-            className="material-symbols-outlined text-secondary opacity-30 text-5xl"
-            data-icon="mosque"
-            style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            mosque
-          </span>
+          <span className="material-symbols-outlined text-[48px] text-secondary opacity-30">mosque</span>
         </div>
         <p className="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">
-          Active Campaigns
+          সক্রিয় ক্যাম্পেইন
         </p>
         <h3 className="text-4xl font-bold font-headline mb-4">4</h3>
         <div className="space-y-2">
           <div className="flex justify-between text-xs font-medium text-on-surface-variant">
-            <span>Global Progress</span>
+            <span>সামগ্রিক অগ্রগতি</span>
             <span>78%</span>
           </div>
           <div className="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
@@ -60,7 +49,7 @@ function DonationsSummary() {
       {/* Recent Contributions */}
       <div className="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/10 shadow-sm">
         <p className="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">
-          Weekly Contributions
+          সাপ্তাহিক অবদান
         </p>
         <h3 className="text-4xl font-bold font-headline mb-4">$12,450</h3>
         <div className="flex -space-x-3">

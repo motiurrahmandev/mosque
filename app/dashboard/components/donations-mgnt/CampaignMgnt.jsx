@@ -4,20 +4,14 @@ function CampaignMgnt() {
       <div className="flex justify-between items-end">
         <div>
           <span className="label-md uppercase tracking-widest text-on-surface-variant text-xs font-bold">
-            In-Progress Appeals
+            চলমান আবেদনসমূহ
           </span>
           <h2 className="text-2xl font-bold font-headline text-primary mt-1">
-            Campaign Management
+            ক্যাম্পেইন ব্যবস্থাপনা
           </h2>
         </div>
         <button className="text-secondary font-bold text-sm hover:underline flex items-center gap-1">
-          View All Campaigns{" "}
-          <span
-            className="material-symbols-outlined text-sm"
-            data-icon="chevron_right"
-          >
-            chevron_right
-          </span>
+          সকল ক্যাম্পেইন দেখুন <span className="material-symbols-outlined text-[16px]">chevron_right</span>
         </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -31,11 +25,11 @@ function CampaignMgnt() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <span className="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-2 py-1 rounded-md text-[10px] font-bold uppercase">
-              Urgent
+              জরুরি
             </span>
           </div>
           <div className="p-5 space-y-4">
-            <h4 className="font-bold text-primary">Ramadan Relief Fund</h4>
+            <h4 className="font-bold text-primary">রমজান ত্রাণ তহবিল</h4>
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-medium text-on-surface-variant">
                 <span>$65,000 / $100k</span>
@@ -49,7 +43,7 @@ function CampaignMgnt() {
               </div>
             </div>
             <button className="w-full py-2 bg-surface-container text-on-surface font-bold text-xs rounded-xl hover:bg-primary hover:text-white transition-colors">
-              Manage
+              পরিচালনা করুন
             </button>
           </div>
         </div>
@@ -64,7 +58,7 @@ function CampaignMgnt() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
           <div className="p-5 space-y-4">
-            <h4 className="font-bold text-primary">Masjid Expansion</h4>
+            <h4 className="font-bold text-primary">মসজিদ সম্প্রসারণ</h4>
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-medium text-on-surface-variant">
                 <span>$320,000 / $500k</span>
@@ -78,7 +72,7 @@ function CampaignMgnt() {
               </div>
             </div>
             <button className="w-full py-2 bg-surface-container text-on-surface font-bold text-xs rounded-xl hover:bg-primary hover:text-white transition-colors">
-              Manage
+              পরিচালনা করুন
             </button>
           </div>
         </div>
@@ -93,7 +87,7 @@ function CampaignMgnt() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
           </div>
           <div className="p-5 space-y-4">
-            <h4 className="font-bold text-primary">Orphan Support</h4>
+            <h4 className="font-bold text-primary">এতিম সহায়তা</h4>
             <div className="space-y-2">
               <div className="flex justify-between text-xs font-medium text-on-surface-variant">
                 <span>$12,400 / $20k</span>
@@ -107,22 +101,17 @@ function CampaignMgnt() {
               </div>
             </div>
             <button className="w-full py-2 bg-surface-container text-on-surface font-bold text-xs rounded-xl hover:bg-primary hover:text-white transition-colors">
-              Manage
+              পরিচালনা করুন
             </button>
           </div>
         </div>
         {/* Placeholder/Add Card */}
         <button className="border-2 border-dashed border-outline-variant/50 rounded-2xl flex flex-col items-center justify-center p-8 group hover:border-secondary hover:bg-secondary-fixed/5 transition-all">
           <div className="h-12 w-12 rounded-full bg-surface-container-high flex items-center justify-center mb-4 group-hover:bg-secondary-container transition-colors">
-            <span
-              className="material-symbols-outlined text-on-surface-variant group-hover:text-on-secondary-container"
-              data-icon="add"
-            >
-              add
-            </span>
+            <span className="material-symbols-outlined text-on-surface-variant group-hover:text-on-secondary-container text-[24px]">add</span>
           </div>
           <span className="text-sm font-bold text-on-surface-variant group-hover:text-secondary">
-            Create New Campaign
+            নতুন ক্যাম্পেইন তৈরি করুন
           </span>
         </button>
       </div>

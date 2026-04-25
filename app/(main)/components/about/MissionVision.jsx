@@ -6,47 +6,37 @@ function MissionVision() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
                 <div className="md:col-span-7 bg-surface-container-low p-12 rounded-xl relative overflow-hidden group">
                     <span className="text-secondary font-bold tracking-widest text-xs uppercase mb-4 block">
-                        Our Foundation
+                        আমাদের ভিত্তি
                     </span>
                     <h2 className="text-4xl font-headline text-primary mb-6">
-                        Our Mission
+                        আমাদের লক্ষ্য
                     </h2>
                     <p className="text-lg text-on-surface-variant leading-relaxed">
-                        To provide a sanctuary for spiritual growth, intellectual
-                        enrichment, and community service rooted in the timeless
-                        principles of faith, compassion, and social justice. We strive to
-                        be a beacon of guidance for all who seek peace.
+                        বিশ্বাস, সমবেদনা এবং সামাজিক ন্যায়বিচারের অমর নীতির উপর ভিত্তি করে আধ্যাত্মিক বিকাশ, বুদ্ধিবৃত্তিক সমৃদ্ধি এবং সমাজ সেবার জন্য একটি আশ্রয়স্থল গড়ে তোলা। যারা শান্তি খোঁজে তাদের জন্য আমরা একটি আলোকবর্তিকা হতে চাই।
                     </p>
                 </div>
                 <div className="md:col-span-5 bg-primary-container p-12 rounded-xl text-on-primary-container">
                     <span className="text-secondary-fixed font-bold tracking-widest text-xs uppercase mb-4 block">
-                        Future Forward
+                        ভবিষ্যতের পথে
                     </span>
                     <h2 className="text-4xl font-headline mb-6 text-white">
-                        Our Vision
+                        আমাদের ভিশন
                     </h2>
                     <p className="text-lg leading-relaxed opacity-90">
-                        To cultivate an inclusive and vibrant community that inspires
-                        generations to live with purpose, excel in character, and
-                        contribute to the flourishing of humanity.
+                        এমন একটি অন্তর্ভুক্তিমূলক এবং প্রাণবন্ত সমাজ গঠন করা যা প্রজন্ম থেকে প্রজন্মকে উদ্দেশ্যপূর্ণ জীবনযাপন, উন্নত চরিত্র গঠন এবং মানবতার কল্যাণে অবদান রাখতে অনুপ্রাণিত করবে।
                     </p>
                 </div>
                 <div className="md:col-span-12 bg-surface-container-highest p-12 rounded-xl flex flex-col md:flex-row items-center gap-12">
                     <div className="md:w-1/2">
                         <h2 className="text-4xl font-headline text-primary mb-6">
-                            Centuries of History
+                            শতবর্ষের ইতিহাস
                         </h2>
                         <div className="space-y-6 text-on-surface-variant">
                             <p>
-                                Founded at the turn of the century, The Sacred Sanctuary began
-                                as a modest prayer hall for local families. Through decades of
-                                dedication, it has evolved into a regional center for
-                                spiritual excellence.
+                                শতাব্দীর শুরুতে স্থাপিত, পবিত্র আশ্রয়স্থলটি স্থানীয় পরিবারের জন্য একটি সাধারণ নামাযের ঘর হিসেবে যাত্রা শুরু করে। কয়েক দশকের আত্মত্যাগের মাধ্যমে এটি আজ আধ্যাত্মিক উৎকর্ষের একটি আঞ্চলিক কেন্দ্রে পরিণত হয়েছে।
                             </p>
                             <p>
-                                Our architecture reflects a synthesis of classical Ottoman
-                                aesthetics and contemporary sustainable design, symbolizing
-                                our bridge between heritage and the future.
+                                আমাদের স্থাপত্যে ধ্রুপদী উসমানীয় নান্দনিকতা এবং সমসাময়িক টেকসই ডিজাইনের অপূর্ব সমন্বয় ঘটেছে, যা আমাদের সমৃদ্ধ ঐতিহ্য ও ভবিষ্যতের মেলবন্ধনের প্রতীক।
                             </p>
                         </div>
                     </div>

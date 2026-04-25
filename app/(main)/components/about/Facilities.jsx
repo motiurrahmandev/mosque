@@ -5,10 +5,10 @@ function Facilities() {
         <section className="py-24 max-w-7xl mx-auto px-8">
             <div className="text-center mb-16">
                 <span className="text-secondary font-bold tracking-widest text-xs uppercase mb-2 block">
-                    The Sanctuary
+                    আমাদের স্থান
                 </span>
                 <h2 className="text-5xl font-headline text-primary">
-                    Our Facilities
+                    আমাদের সুবিধাসমূহ
                 </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -22,11 +22,10 @@ function Facilities() {
                         />
                     </div>
                     <h3 className="text-2xl font-headline text-primary mb-2">
-                        Main Prayer Hall
+                        মূল নামাজ কক্ষ
                     </h3>
                     <p className="text-on-surface-variant">
-                        A majestic space accommodating 2,000 worshippers with climate
-                        control and premium acoustics.
+                        প্রায় ২,০০০ মুসল্লির ধারণক্ষমতা সম্পন্ন শীতাতপ নিয়ন্ত্রিত এবং উন্নত শব্দব্যবস্থা যুক্ত একটি চমৎকার স্থান।
                     </p>
                 </div>
                 {/* Facility 2 */}
@@ -39,11 +38,10 @@ function Facilities() {
                         />
                     </div>
                     <h3 className="text-2xl font-headline text-primary mb-2">
-                        Heritage Library
+                        ঐতিহ্যবাহী পাঠাগার
                     </h3>
                     <p className="text-on-surface-variant">
-                        Housing over 10,000 manuscripts and contemporary books with quiet
-                        study alcoves.
+                        শান্তিপূর্ণ পড়ার জায়গাসহ ১০,০০০-এর বেশি পাণ্ডুলিপি এবং সমসাময়িক বইয়ের এক বিশাল সংগ্রহশালা।
                     </p>
                 </div>
                 {/* Facility 3 */}
@@ -56,11 +54,10 @@ function Facilities() {
                         />
                     </div>
                     <h3 className="text-2xl font-headline text-primary mb-2">
-                        Community Plaza
+                        কমিউনিটি প্লাজা
                     </h3>
                     <p className="text-on-surface-variant">
-                        Multi-purpose space for educational seminars, social gatherings,
-                        and youth activities.
+                        শিক্ষামূলক সেমিনার, সামাজিক সমাবেশ এবং যুব কার্যক্রমের জন্য একটি বহুমাত্রিক স্থান।
                     </p>
                 </div>
             </div>

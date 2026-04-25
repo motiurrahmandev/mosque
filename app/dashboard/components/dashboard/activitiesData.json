@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "নাম প্রকাশে অনিচ্ছুক অনুদান",
+    "description": "সাধারণ তহবিল • ২ ঘণ্টা আগে",
+    "value": "+$২,৫০০.০০",
+    "type": "amount",
+    "colorClass": "text-green-700",
+    "icon": "favorite"
+  },
+  {
+    "id": 2,
+    "title": "ছাদ মেরামতের কাজের পেমেন্ট",
+    "description": "রক্ষণাবেক্ষণ • ৫ ঘণ্টা আগে",
+    "value": "-$১,২৪০.০০",
+    "type": "amount",
+    "colorClass": "text-error",
+    "icon": "construction"
+  },
+  {
+    "id": 4,
+    "title": "নতুন স্বেচ্ছাসেবী নিবন্ধিত",
+    "description": "সমাজসেবা • গতকাল",
+    "value": "অপেক্ষমাণ",
+    "type": "badge",
+    "colorClass": "bg-secondary-container text-on-secondary-container group-hover:bg-secondary group-hover:text-white",
+    "icon": "person_add"
+  },
+  {
+    "id": 5,
+    "title": "মাসিক বার্তা পাঠানো হয়েছে",
+    "description": "যোগাযোগ • ২ দিন আগে",
+    "value": "প্রেরিত",
+    "type": "badge",
+    "colorClass": "bg-primary-container/10 text-primary group-hover:bg-primary group-hover:text-white",
+    "icon": "campaign"
+  }
+]

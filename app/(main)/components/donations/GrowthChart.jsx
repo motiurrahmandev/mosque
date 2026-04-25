@@ -5,26 +5,26 @@ function GrowthChart() {
         <section className="tonal-shift-surface-container-low py-20 px-8 overflow-hidden">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
                 <div className="md:w-1/2">
-                    <h2 className="font-headline text-4xl text-primary mb-6">Our Expansion Progress</h2>
-                    <p className="text-lg text-on-surface-variant mb-8">We are growing our physical footprint to serve a growing congregation. These "Pillars of Growth" track our capital project milestones.</p>
+                    <h2 className="font-headline text-4xl text-primary mb-6">আমাদের সম্প্রসারণের অগ্রগতি</h2>
+                    <p className="text-lg text-on-surface-variant mb-8">ক্রমবর্ধমান মুসল্লিদের সেবা দেওয়ার জন্য আমরা আমাদের পরিসর বাড়াচ্ছি। ফান্ডরেইজিং প্রজেক্টের এই মাইলফলকগুলো এখানে তুলে ধরা হলো।</p>
                     <div className="grid grid-cols-3 gap-6 h-[400px]">
                         <div className="flex flex-col items-center justify-end">
                             <div className="w-16 bg-secondary h-[90%] rounded-t-2xl relative">
-                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-bold text-primary">90%</div>
+                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-bold text-primary">৯০%</div>
                             </div>
-                            <p className="text-xs mt-4 text-center font-bold">Land Acquisition</p>
+                            <p className="text-xs mt-4 text-center font-bold">জমি অধিগ্রহণ</p>
                         </div>
                         <div className="flex flex-col items-center justify-end">
                             <div className="w-16 bg-secondary h-[45%] rounded-t-2xl relative">
-                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-bold text-primary">45%</div>
+                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-bold text-primary">৪৫%</div>
                             </div>
-                            <p className="text-xs mt-4 text-center font-bold">Foundation</p>
+                            <p className="text-xs mt-4 text-center font-bold">ভিত্তিপ্রস্তর</p>
                         </div>
                         <div className="flex flex-col items-center justify-end">
                             <div className="w-16 bg-secondary h-[15%] rounded-t-2xl relative">
-                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-bold text-primary">15%</div>
+                                <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-bold text-primary">১৫%</div>
                             </div>
-                            <p className="text-xs mt-4 text-center font-bold">Main Hall</p>
+                            <p className="text-xs mt-4 text-center font-bold">মূল হল</p>
                         </div>
                     </div>
                 </div>
