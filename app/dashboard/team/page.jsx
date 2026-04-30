@@ -1,8 +1,71 @@
 "use client";
 import { useDashboard } from "../components/DashboardContext";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import TeamMemberModal from "./components/TeamMemberModal";
+import { getMembers, createMember, updateMember, deleteMember } from "@/app/actions/teamActions";
 
 function TeamMgnt() {
   const { toggleSidebar } = useDashboard();
+  
+  const [members, setMembers] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingMember, setEditingMember] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchMembers = async () => {
+    setIsLoading(true);
+    const result = await getMembers();
+    if (result.success) {
+      setMembers(result.data);
+    } else {
+      console.error(result.error);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchMembers();
+  }, []);
+
+  const handleOpenModal = (member = null) => {
+    setEditingMember(member);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setEditingMember(null);
+    setIsModalOpen(false);
+  };
+
+  const handleModalSubmit = async (formData, id) => {
+    if (id) {
+      const result = await updateMember(id, formData);
+      if (result.success) {
+        setMembers((prev) => prev.map((m) => (m._id === id ? result.data : m)));
+      } else {
+        alert(result.error || "Failed to update");
+      }
+    } else {
+      const result = await createMember(formData);
+      if (result.success) {
+        setMembers((prev) => [result.data, ...prev]);
+      } else {
+        alert(result.error || "Failed to create");
+      }
+    }
+    handleCloseModal();
+  };
+
+  const handleDelete = async (id) => {
+    if (!confirm("আপনি কি নিশ্চিত যে আপনি এই সদস্যকে মুছে ফেলতে চান?")) return;
+    const result = await deleteMember(id);
+    if (result.success) {
+      setMembers((prev) => prev.filter((m) => m._id !== id));
+    } else {
+      alert(result.error || "Failed to delete");
+    }
+  };
 
   return (
     <main className="flex-1 lg:ml-64 p-4 md:p-10 lg:p-16">
@@ -28,7 +91,10 @@ function TeamMgnt() {
             <button className="flex-1 sm:flex-none px-6 py-3 bg-surface-container-high text-primary font-semibold rounded-xl hover:bg-surface-variant transition-all text-sm">
               রিপোর্ট ডাউনলোড
             </button>
-            <button className="flex-1 sm:flex-none px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold rounded-xl shadow-[0px_20px_40px_rgba(21,66,18,0.06)] hover:opacity-90 transition-all flex items-center justify-center gap-2 text-sm">
+            <button 
+              onClick={() => handleOpenModal()}
+              className="flex-1 sm:flex-none px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold rounded-xl shadow-[0px_20px_40px_rgba(21,66,18,0.06)] hover:opacity-90 transition-all flex items-center justify-center gap-2 text-sm"
+            >
               <span className="material-symbols-outlined text-[16px]">add</span>
               নতুন সদস্য
             </button>
@@ -46,82 +112,62 @@ function TeamMgnt() {
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Team Member Card 1 */}
-          <div className="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-outline-variant/10 group">
-            <div className="relative mb-6 overflow-hidden rounded-2xl">
-              <img
-                alt="Imam Portrait"
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
-                data-alt="Dignified man with a short beard wearing traditional headwear, smiling warmly in a bright library"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF-2OCFYsa3f0Bh2PGFv7Txrv-gmZQ037MjPWZ33kD8ZOqVpygGgyc6pt0t0GD5_5eZgRx9lO3Ba3Ry7swfK2KoBTmlQr8KwU0qstq1_1OSSUkXnLJpFvHbdlapk-N-POa6RixEcY73PBVMZ9P7Jost78BaYrc_L-kypFDaECgcD3AypVO_wCAzya_5zWbbnQdoE9O03bjVcHMCCeRNy8jvaKAxl2QMb6m10PMcJCumidQOIf0gNgqxdMzpcE3Io3DEXhKRrYdxLM"
-              />
-              <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-md text-on-primary px-4 py-1 rounded-full text-xs font-bold">
-                ইমাম
+          {isLoading ? (
+            <div className="col-span-full flex justify-center py-12">
+              <span className="material-symbols-outlined animate-spin text-primary text-4xl">sync</span>
+            </div>
+          ) : (
+            <>
+              {members.map((member) => (
+                <div key={member._id} className="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-outline-variant/10 group">
+                  <div className="relative mb-6 overflow-hidden rounded-2xl h-64 bg-surface-container">
+                    <Image
+                      alt={member.name}
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                      src={member.image || "https://placehold.co/400x400?text=No+Image"}
+                    />
+                    <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-md text-on-primary px-4 py-1 rounded-full text-xs font-bold shadow-sm">
+                      {member.role}
+                    </div>
+                  </div>
+                  <div className="px-2">
+                    <h4 className="text-xl font-headline font-bold text-primary mb-1">
+                      {member.name}
+                    </h4>
+                    {member.contactInfo && (
+                      <p className="text-sm text-on-surface-variant mb-4 flex items-center gap-2">
+                        <span className="material-symbols-outlined text-[16px]">contact_mail</span>
+                        {member.contactInfo}
+                      </p>
+                    )}
+                    <div className="flex gap-2 mt-4">
+                      <button onClick={() => handleOpenModal(member)} className="p-2 text-primary hover:bg-primary-container rounded-lg transition-colors">
+                        <span className="material-symbols-outlined text-[20px]">edit</span>
+                      </button>
+                      <button onClick={() => handleDelete(member._id)} className="p-2 text-error hover:bg-error-container rounded-lg transition-colors ml-auto">
+                        <span className="material-symbols-outlined text-[20px]">delete</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Add New Member Placeholder */}
+              <div 
+                onClick={() => handleOpenModal()}
+                className="bg-surface-container-low rounded-[2rem] p-8 border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-center group cursor-pointer hover:bg-surface-container transition-all min-h-[350px]"
+              >
+                <div className="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-sm">
+                  <span className="material-symbols-outlined text-[40px] text-primary">person_add</span>
+                </div>
+                <h4 className="text-lg font-bold text-primary">নতুন সদস্য যোগ করুন</h4>
+                <p className="text-sm text-on-surface-variant max-w-[180px] mt-2">
+                  পোর্টালে নতুন প্রশাসক বা ধর্মীয় কর্মী যোগ করুন।
+                </p>
               </div>
-            </div>
-            <div className="px-2">
-              <h4 className="text-xl font-headline font-bold text-primary mb-1">
-                শাইখ আব্দুর রহমান
-              </h4>
-              <p className="text-sm text-on-surface-variant mb-4 leading-relaxed line-clamp-2">
-                দীর্ঘ ১৫ বছর ধরে প্রজ্ঞা ও সহানুভূতির সাথে আমাদের কমিউনিটির আধ্যাত্মিক বৃদ্ধি এবং শিক্ষামূলক কর্মসূচি পরিচালনা করছেন।
-              </p>
-              <div className="flex gap-2">
-                <button className="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors">
-                  <span className="material-symbols-outlined text-[20px]">edit</span>
-                </button>
-                <button className="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors">
-                  <span className="material-symbols-outlined text-[20px]">visibility</span>
-                </button>
-                <button className="p-2 text-error hover:bg-error-container rounded-lg transition-colors ml-auto">
-                  <span className="material-symbols-outlined text-[20px]">delete</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* Team Member Card 2 */}
-          <div className="bg-surface-container-lowest rounded-[2rem] p-6 shadow-sm border border-outline-variant/10 group">
-            <div className="relative mb-6 overflow-hidden rounded-2xl">
-              <img
-                alt="Muazzin Portrait"
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
-                data-alt="Young man with a clean-cut beard wearing a smart casual vest, standing in front of an arched entryway"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFOECXVMWtZPzU15YWFuXlCZMUavHp0vsVWrJv8QgD40zx5htv5tKSxLo-85vYyMjL21Q4iy-GygtUDB6X-TKDBLvzYBtrzAk3NQwDIaCx_d9nne7lN31T_RfssScXHC4Q__T2VIjBQj9Slyc0oQUaAFgIHbDqc-_wCP5UlDySGthKLTR2Ikwp-MR1Kgs7YGlM3DBE4agQlyJGEPveu-7s9IA99a220uJSmYjblKTOdPibqUQQRZfvi_OsNzyN8KauXAMvqFz5NGc"
-              />
-              <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-md text-on-primary px-4 py-1 rounded-full text-xs font-bold">
-                মুয়াজ্জিন
-              </div>
-            </div>
-            <div className="px-2">
-              <h4 className="text-xl font-headline font-bold text-primary mb-1">
-                হাসান আল-ফায়েদ
-              </h4>
-              <p className="text-sm text-on-surface-variant mb-4 leading-relaxed line-clamp-2">
-                তাঁর সুমধুর কণ্ঠস্বর এবং মসজিদের নিয়মিত সময়সূচী ও আধ্যাত্মিক পরিবেশ বজায় রাখার প্রতি নিষ্ঠার জন্য পরিচিত।
-              </p>
-              <div className="flex gap-2">
-                <button className="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors">
-                  <span className="material-symbols-outlined text-[20px]">edit</span>
-                </button>
-                <button className="p-2 text-primary hover:bg-primary-fixed rounded-lg transition-colors">
-                  <span className="material-symbols-outlined text-[20px]">visibility</span>
-                </button>
-                <button className="p-2 text-error hover:bg-error-container rounded-lg transition-colors ml-auto">
-                  <span className="material-symbols-outlined text-[20px]">delete</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* Add New Member Placeholder */}
-          <div className="bg-surface-container-low rounded-[2rem] p-8 border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-center group cursor-pointer hover:bg-surface-container transition-all">
-            <div className="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <span className="material-symbols-outlined text-[40px] text-primary">person_add</span>
-            </div>
-            <h4 className="text-lg font-bold text-primary">নতুন সদস্য যোগ করুন</h4>
-            <p className="text-sm text-on-surface-variant max-w-[180px] mt-2">
-              পোর্টালে নতুন প্রশাসক বা ধর্মীয় কর্মী যোগ করুন।
-            </p>
-          </div>
+            </>
+          )}
         </div>
       </section>
       {/* Donation & Campaigns Section */}
@@ -369,6 +415,13 @@ function TeamMgnt() {
           </div>
         </div> */}
       </section>
+      
+      <TeamMemberModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onSubmit={handleModalSubmit}
+        editingMember={editingMember}
+      />
     </main>
   );
 }

@@ -40,11 +40,10 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`flex justify-between items-center w-full max-w-7xl px-4 sm:px-8 py-3 rounded-2xl transition-all duration-500 border ${
-          isScrolled
-            ? "bg-[#f9faf6]/90 backdrop-blur-xl shadow-lg border-[#c2c9bb]/50"
-            : "bg-[#f3f4f0]/70 backdrop-blur-md shadow-sm border-transparent"
-        }`}
+        className={`flex justify-between items-center w-full max-w-7xl px-4 sm:px-8 py-3 rounded-2xl transition-all duration-500 border ${isScrolled
+          ? "bg-[#f9faf6]/90 backdrop-blur-xl shadow-lg border-[#c2c9bb]/50"
+          : "bg-[#f3f4f0]/70 backdrop-blur-md shadow-sm border-transparent"
+          }`}
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
@@ -71,9 +70,8 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onMouseEnter={() => setHoveredIndex(index)}
-                className={`relative px-5 py-2.5 text-sm font-medium rounded-full flex items-center gap-2 transition-colors duration-300 ${
-                  isActive || isHovered ? "text-[#154212]" : "text-[#42493e]"
-                }`}
+                className={`relative px-5 py-2.5 text-sm font-medium rounded-full flex items-center gap-2 transition-colors duration-300 ${isActive || isHovered ? "text-[#154212]" : "text-[#42493e]"
+                  }`}
               >
                 <span className="relative z-10 flex items-center gap-2">
                   {link.icon && (
