@@ -29,11 +29,8 @@ export async function createMember(formData) {
     }
 
     // Upload image to ImageKit
-    const arrayBuffer = await imageFile.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    
-    const uploadResponse = await imagekit.upload({
-      file: buffer,
+    const uploadResponse = await imagekit.files.upload({
+      file: imageFile,
       fileName: imageFile.name || `team-member-${Date.now()}`,
       folder: "/mosque/team",
     });
@@ -64,11 +61,8 @@ export async function updateMember(id, formData) {
     const updateData = { name, role, contactInfo };
 
     if (imageFile && imageFile.size > 0) {
-      const arrayBuffer = await imageFile.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
-      
-      const uploadResponse = await imagekit.upload({
-        file: buffer,
+      const uploadResponse = await imagekit.files.upload({
+        file: imageFile,
         fileName: imageFile.name || `team-member-${Date.now()}`,
         folder: "/mosque/team",
       });

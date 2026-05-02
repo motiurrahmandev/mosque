@@ -23,5 +23,10 @@
     "label": "আর্থিক হিসাব",
     "href": "/dashboard/financial",
     "icon": "payments"
+  },
+  {
+    "label": "ইভেন্ট ব্যবস্থাপনা",
+    "href": "/dashboard/events",
+    "icon": "event_note"
   }
 ]

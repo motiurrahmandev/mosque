@@ -86,23 +86,41 @@ function AnnualCanalder() {
 
     const getHijriMonthYear = () => {
         try {
-            const midMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 15);
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+
             const formatter = new Intl.DateTimeFormat('en-US-u-ca-islamic', {
                 month: 'numeric',
                 year: 'numeric'
             });
-            const parts = formatter.formatToParts(midMonth);
-            const m = parts.find(p => p.type === 'month');
-            const y = parts.find(p => p.type === 'year');
-            
-            if (m && y) {
-                // 'en-US-u-ca-islamic' numeric month usually returns 1-12
-                const monthIndex = parseInt(m.value) - 1;
-                const hijriName = hijriMonthNamesBn[monthIndex] || "";
-                return `${hijriName} ${toBnNum(y.value)}`;
+
+            const getHijriParts = (date) => {
+                const parts = formatter.formatToParts(date);
+                return {
+                    month: parseInt(parts.find(p => p.type === 'month').value),
+                    year: parts.find(p => p.type === 'year').value
+                };
+            };
+
+            const startHijri = getHijriParts(firstDay);
+            const endHijri = getHijriParts(lastDay);
+
+            const startMonthName = hijriMonthNamesBn[startHijri.month - 1];
+            const endMonthName = hijriMonthNamesBn[endHijri.month - 1];
+
+            if (startMonthName === endMonthName) {
+                return `${startMonthName} ${toBnNum(startHijri.year)}`;
+            } else {
+                // If years are different (unlikely within one month but possible at year end)
+                if (startHijri.year !== endHijri.year) {
+                    return `${startMonthName} ${toBnNum(startHijri.year)} - ${endMonthName} ${toBnNum(endHijri.year)}`;
+                }
+                return `${startMonthName} - ${endMonthName} ${toBnNum(startHijri.year)}`;
             }
-            return "";
-        } catch {
+        } catch (error) {
+            console.error("Error calculating Hijri months:", error);
             return "";
         }
     };

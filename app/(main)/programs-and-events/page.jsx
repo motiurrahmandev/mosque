@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { getEvents } from '@/app/actions/eventActions';
 
+export const revalidate = 0;
 
-function ProgramsAndEvents() {
+async function ProgramsAndEvents() {
+  const result = await getEvents();
+  const events = result.success ? result.data : [];
+
   return (
     <main className="pt-32 pb-12">
       { /* Hero Section: Editorial Asymmetry */}
@@ -23,7 +28,7 @@ function ProgramsAndEvents() {
         </div>
       </section>
       { /* Friday Khutbah Spotlight: Glassmorphism */}
-      <section className="max-w-7xl mx-auto px-8 mb-24">
+      {/* <section className="max-w-7xl mx-auto px-8 mb-24">
         <div className="bg-primary-container rounded-[2rem] overflow-hidden relative shadow-ambient">
           <div className="absolute inset-0 bg-gradient-to-r from-primary to-transparent opacity-90" />
           <div className="relative z-10 p-12 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -51,18 +56,10 @@ function ProgramsAndEvents() {
                 </div>
               </div>
             </div>
-            <div className="flex justify-end">
-              <div className="glass p-8 rounded-3xl border border-white/20 w-full max-w-xs text-primary">
-                <h3 className="font-headline text-2xl font-bold mb-4">সরাসরি সম্প্রচার</h3>
-                <p className="text-sm mb-6 opacity-80">স্বশরীরে আসতে পারছেন না? যেকোনো জায়গা থেকে খুতবার সুবিধা নিন।</p>
-                <button className="w-full bg-primary text-on-primary py-3 rounded-xl font-bold flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-[20px]">play_circle</span> সরাসরি দেখুন
-                </button>
-              </div>
-            </div>
+           
           </div>
         </div>
-      </section>
+      </section> */}
       { /* Learning Streams: Bento Grid */}
       <section className="max-w-7xl mx-auto px-8 mb-24">
         <div className="flex justify-between items-end mb-12">
@@ -141,61 +138,67 @@ function ProgramsAndEvents() {
           <span className="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-2 block">দিনলিপি</span>
           <h2 className="text-4xl font-headline font-bold text-primary">আসন্ন সামাজিক কার্যক্রম</h2>
         </div>
-        <div className="space-y-6">
-          { /* Event 1 */}
-          <div className="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container-high transition-colors group cursor-pointer">
-            <div className="w-full md:w-32 h-32 bg-white rounded-2xl flex flex-col items-center justify-center shadow-sm">
-              <span className="text-3xl font-headline font-bold text-primary">১৫</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">অক্টোবর</span>
-            </div>
-            <div className="flex-grow">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">যুব নেটওয়ার্ক</span>
-              <h3 className="text-xl font-headline font-bold mb-1">ইয়ুথ সকার এবং আধ্যাত্মিক মজলিস</h3>
-              <p className="text-on-surface-variant text-sm flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px]">location_on</span>
-                কমিউনিটি স্পোর্টস সেন্টার • বিকাল ৪:০০ - ৭:০০
-              </p>
-            </div>
-            <div className="w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">নিবন্ধন করুন</button>
-            </div>
-          </div>
-          { /* Event 2 */}
-          <div className="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container-high transition-colors group cursor-pointer">
-            <div className="w-full md:w-32 h-32 bg-white rounded-2xl flex flex-col items-center justify-center shadow-sm">
-              <span className="text-3xl font-headline font-bold text-primary">২২</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">অক্টোবর</span>
-            </div>
-            <div className="flex-grow">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">কমিউনিটি কিচেন</span>
-              <h3 className="text-xl font-headline font-bold mb-1">প্রতিবেশীর জন্য খাবার বিতরণ</h3>
-              <p className="text-on-surface-variant text-sm flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px]">location_on</span>
-                মসজিদের রান্নাঘর • সকাল ১০:০০ থেকে
-              </p>
-            </div>
-            <div className="w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">ভলান্টিয়ার হোন</button>
-            </div>
-          </div>
-          { /* Event 3 */}
-          <div className="bg-surface-container-low rounded-3xl p-6 flex flex-col md:flex-row gap-8 items-center hover:bg-surface-container-high transition-colors group cursor-pointer">
-            <div className="w-full md:w-32 h-32 bg-white rounded-2xl flex flex-col items-center justify-center shadow-sm">
-              <span className="text-3xl font-headline font-bold text-primary">০২</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">নভেম্বর</span>
-            </div>
-            <div className="flex-grow">
-              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-full mb-2">বোনদের ফোরাম</span>
-              <h3 className="text-xl font-headline font-bold mb-1">শিক্ষানবিশদের জন্য আরবি কর্মশালা</h3>
-              <p className="text-on-surface-variant text-sm flex items-center gap-2">
-                <span className="material-symbols-outlined text-[16px]">location_on</span>
-                সেমিনার রুম এ • সন্ধ্যা ৬:৩০ - রাত ৮:৩০
-              </p>
-            </div>
-            <div className="w-full md:w-auto">
-              <button className="w-full md:w-auto bg-white text-primary px-6 py-3 rounded-xl font-bold border border-outline-variant group-hover:bg-primary group-hover:text-white transition-all">বুকিং দিন</button>
-            </div>
-          </div>
+        <div className="space-y-12">
+          {events.length === 0 ? (
+            <p className="text-on-surface-variant italic text-center py-8">কোনো ইভেন্ট পাওয়া যায়নি।</p>
+          ) : (
+            events.map((event, index) => {
+              const isEven = index % 2 === 0;
+              const bgClass = isEven ? "bg-primary-container" : "bg-secondary-container";
+              const gradientClass = isEven ? "from-primary" : "from-secondary";
+
+              return (
+                <div key={event._id} className={`${bgClass} rounded-[2rem] overflow-hidden relative shadow-ambient`}>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${gradientClass} to-transparent opacity-90`} />
+                  <div className="relative z-10 p-12 md:p-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                      <div className="flex items-center gap-3 text-white/80 mb-6">
+                        <span className="material-symbols-outlined text-[20px]">calendar_month</span>
+                        <span className="font-bold tracking-widest uppercase text-sm">{event.category}</span>
+                      </div>
+                      <h2 className="text-4xl md:text-5xl font-headline text-white font-bold mb-6">{event.title}</h2>
+                      <p className="text-white/90 text-lg mb-8 leading-relaxed line-clamp-4">{event.description}</p>
+                      <div className="flex flex-wrap items-center gap-6">
+                        {event.author && (
+                          <>
+                            <div className="flex items-center gap-3">
+                              <div className="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shadow-sm">
+                                <span className="material-symbols-outlined text-[24px]">person</span>
+                              </div>
+                              <div className="text-white">
+                                <p className="font-bold">{event.author}</p>
+                                <p className="text-sm opacity-80">আয়োজক/বক্তা</p>
+                              </div>
+                            </div>
+                            <div className="h-12 w-px bg-white/30 hidden sm:block" />
+                          </>
+                        )}
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-white text-primary flex items-center justify-center shadow-sm">
+                            <span className="material-symbols-outlined text-[24px]">schedule</span>
+                          </div>
+                          <div className="text-white">
+                            <p className="font-bold">{event.eventTime}</p>
+                            <p className="text-sm opacity-80">সময় ও স্থান</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {event.image && (
+                      <div className="relative aspect-video md:aspect-square rounded-3xl overflow-hidden shadow-2xl group/img">
+                        <img 
+                          src={event.image} 
+                          alt={event.title} 
+                          className="w-full h-full object-cover group-hover/img:scale-110 transition-transform duration-700" 
+                        />
+                        <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl" />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       </section>
       { /* Newsletter / CTA */}

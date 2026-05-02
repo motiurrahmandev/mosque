@@ -7,7 +7,7 @@ import { getMembers, createMember, updateMember, deleteMember } from "@/app/acti
 
 function TeamMgnt() {
   const { toggleSidebar } = useDashboard();
-  
+
   const [members, setMembers] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingMember, setEditingMember] = useState(null);
@@ -72,11 +72,11 @@ function TeamMgnt() {
       <header className="mb-12">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
           <div className="flex items-center gap-4">
-            <button 
-                onClick={toggleSidebar}
-                className="lg:hidden p-2 -ml-2 text-stone-500 hover:bg-stone-100 rounded-full"
+            <button
+              onClick={toggleSidebar}
+              className="lg:hidden p-2 -ml-2 text-stone-500 hover:bg-stone-100 rounded-full"
             >
-                <span className="material-symbols-outlined">menu</span>
+              <span className="material-symbols-outlined">menu</span>
             </button>
             <div>
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-2 block">
@@ -91,7 +91,7 @@ function TeamMgnt() {
             <button className="flex-1 sm:flex-none px-6 py-3 bg-surface-container-high text-primary font-semibold rounded-xl hover:bg-surface-variant transition-all text-sm">
               রিপোর্ট ডাউনলোড
             </button>
-            <button 
+            <button
               onClick={() => handleOpenModal()}
               className="flex-1 sm:flex-none px-6 py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-semibold rounded-xl shadow-[0px_20px_40px_rgba(21,66,18,0.06)] hover:opacity-90 transition-all flex items-center justify-center gap-2 text-sm"
             >
@@ -152,9 +152,9 @@ function TeamMgnt() {
                   </div>
                 </div>
               ))}
-              
+
               {/* Add New Member Placeholder */}
-              <div 
+              <div
                 onClick={() => handleOpenModal()}
                 className="bg-surface-container-low rounded-[2rem] p-8 border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-center group cursor-pointer hover:bg-surface-container transition-all min-h-[350px]"
               >
@@ -308,11 +308,11 @@ function TeamMgnt() {
           </div>
         </div> */}
 
-        {/* <div className="space-y-8">
+        <div className="space-y-8">
           <h3 className="text-2xl font-headline text-on-surface">
             Active Campaigns
           </h3>
-        
+
           <div className="bg-primary text-on-primary rounded-[2rem] p-8 relative overflow-hidden">
             <div className="relative z-10">
               <div className="flex justify-between items-start mb-6">
@@ -356,7 +356,7 @@ function TeamMgnt() {
                 </button>
               </div>
             </div>
-            
+
             <div
               className="absolute top-0 right-0 w-40 h-40 bg-white/5 opacity-10 pointer-events-none"
               style={{
@@ -367,7 +367,7 @@ function TeamMgnt() {
               }}
             />
           </div>
-        
+
           <div className="bg-surface-container-lowest rounded-[2rem] p-8 border border-outline-variant/20">
             <h4 className="text-lg font-bold text-primary mb-6">
               Launch New Campaign
@@ -413,10 +413,10 @@ function TeamMgnt() {
               </button>
             </form>
           </div>
-        </div> */}
+        </div>
       </section>
-      
-      <TeamMemberModal 
+
+      <TeamMemberModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         onSubmit={handleModalSubmit}
