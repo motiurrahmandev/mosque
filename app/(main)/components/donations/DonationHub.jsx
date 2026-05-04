@@ -1,54 +1,175 @@
-import React from 'react'
+'use client';
+
+import React, { useState } from 'react'
 import homeData from '../../data/homeData.json'
 import DynamicIcon from '../ui/DynamicIcon'
+// import { createDonation } from '../../actions/donationActions'
+import { createDonation } from '@/app/actions/donationActions';
 
 function DonationHub() {
     const { donation } = homeData;
 
+    // State for form fields
+    const [selectedType, setSelectedType] = useState(donation.types[0].label);
+    const [amount, setAmount] = useState('');
+    const [selectedMethod, setSelectedMethod] = useState(donation.methods[2].label); // Default to bKash/Nagad
+    const [donorName, setDonorName] = useState('');
+    const [donorEmail, setDonorEmail] = useState('');
+
+    // UI State
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState({ type: '', text: '' });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setMessage({ type: '', text: '' });
+
+        // Calculate final amount
+        const finalAmount = amount;
+
+        if (!finalAmount || isNaN(finalAmount) || finalAmount <= 0) {
+            setMessage({ type: 'error', text: 'অনুগ্রহ করে সঠিক পরিমাণ লিখুন' });
+            setIsLoading(false);
+            return;
+        }
+
+        if (!donorName || !donorEmail) {
+            setMessage({ type: 'error', text: 'নাম এবং ইমেইল প্রদান করা আবশ্যক' });
+            setIsLoading(false);
+            return;
+        }
+
+        const formData = {
+            name: donorName,
+            email: donorEmail,
+            category: selectedType,
+            amount: finalAmount,
+            paymentMethod: selectedMethod
+        };
+
+        const result = await createDonation(formData);
+
+        if (result.success) {
+            setMessage({ type: 'success', text: result.message });
+            // Reset form
+            setDonorName('');
+            setDonorEmail('');
+            setAmount('');
+        } else {
+            setMessage({ type: 'error', text: result.message });
+        }
+
+        setIsLoading(false);
+    };
+
     return (
-        <section className="tonal-shift-surface-container-low py-20 px-8">
+        <section id="donate" className="tonal-shift-surface-container-low py-20 px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="grid lg:grid-cols-3 gap-8">
-                    { /* Donation Type Selector */}
+                    { /* Donation Form Container */}
                     <div className="lg:col-span-2 bg-surface-container-lowest p-8 md:p-12 rounded-3xl shadow-sm border border-outline-variant/10">
                         <h2 className="font-headline text-3xl text-primary mb-8">{donation.title}</h2>
-                        <div className="grid grid-cols-2 gap-4 mb-10">
-                            {donation.types.map((type, index) => (
-                                <button key={index} className={`flex flex-col items-center p-6 rounded-2xl ${type.active ? 'border-2 border-secondary bg-secondary-fixed/10 text-on-secondary-fixed-variant' : 'border-2 border-transparent bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface-variant'}`}>
-                                    <DynamicIcon name={type.icon} className="w-8 h-8 mb-2" />
-                                    <span className="font-bold">{type.label}</span>
-                                </button>
-                            ))}
-                        </div>
-                        <div className="mb-10">
-                            <p className="label-md uppercase tracking-widest text-on-surface-variant mb-4 font-semibold">{donation.amountLabel}</p>
-                            <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
-                                {donation.amounts.map((amount, index) => (
+
+                        <form onSubmit={handleSubmit}>
+                            { /* Donation Type Selector */}
+                            <div className="grid grid-cols-2 gap-4 mb-8">
+                                {donation.types.map((type, index) => (
                                     <button
+                                        type="button"
                                         key={index}
-                                        className={`py-3 rounded-xl ${amount === donation.defaultAmount ? 'bg-primary-container text-on-primary-container font-bold' : 'border border-outline-variant text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-colors'}`}
+                                        onClick={() => setSelectedType(type.label)}
+                                        className={`flex flex-col items-center p-6 rounded-2xl transition-all duration-300 ${selectedType === type.label ? 'border-2 border-secondary bg-secondary-fixed/10 text-on-secondary-fixed-variant' : 'border-2 border-transparent bg-surface-container hover:bg-surface-container-high text-on-surface-variant'}`}
                                     >
-                                        {amount}
+                                        <DynamicIcon name={type.icon} className="w-8 h-8 mb-2" />
+                                        <span className="font-bold">{type.label}</span>
                                     </button>
                                 ))}
                             </div>
-                        </div>
-                        <div className="mb-10">
-                            <p className="label-md uppercase tracking-widest text-on-surface-variant mb-4 font-semibold">{donation.methodLabel}</p>
-                            <div className="flex flex-wrap gap-4">
-                                {donation.methods.map((method, index) => (
-                                    <div key={index} className="flex items-center gap-3 px-4 py-3 rounded-xl border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
-                                        <DynamicIcon name={method.icon} className="w-5 h-5 text-on-surface-variant" />
-                                        <span>{method.label}</span>
-                                    </div>
-                                ))}
+
+                            { /* Donor Info */}
+                            <div className="grid md:grid-cols-2 gap-6 mb-8">
+                                <div>
+                                    <label className="block label-md uppercase tracking-widest text-on-surface-variant mb-2 font-semibold">আপনার নাম</label>
+                                    <input
+                                        type="text"
+                                        value={donorName}
+                                        onChange={(e) => setDonorName(e.target.value)}
+                                        placeholder="উদা: আব্দুল্লাহ"
+                                        className="w-full bg-surface-container p-4 rounded-xl border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                        required
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block label-md uppercase tracking-widest text-on-surface-variant mb-2 font-semibold">আপনার ইমেইল</label>
+                                    <input
+                                        type="email"
+                                        value={donorEmail}
+                                        onChange={(e) => setDonorEmail(e.target.value)}
+                                        placeholder="email@example.com"
+                                        className="w-full bg-surface-container p-4 rounded-xl border border-outline-variant focus:outline-none focus:ring-2 focus:ring-primary/20"
+                                        required
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <button className="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 rounded-2xl text-xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 group">
-                            {donation.buttonText}
-                            <DynamicIcon name={donation.buttonIcon} className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-                        </button>
+
+                            { /* Amount Input */}
+                            <div className="mb-8">
+                                <label className="block label-md uppercase tracking-widest text-on-surface-variant mb-4 font-semibold">{donation.amountLabel}</label>
+                                <div className="relative group">
+                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-2xl font-bold text-primary group-focus-within:scale-110 transition-transform">৳</div>
+                                    <input
+                                        type="number"
+                                        value={amount}
+                                        onChange={(e) => setAmount(e.target.value)}
+                                        placeholder="টাকার পরিমাণ লিখুন"
+                                        className="w-full bg-surface-container pl-12 pr-6 py-5 rounded-2xl border-2 border-transparent focus:border-primary/20 focus:bg-surface-container-high transition-all text-2xl font-bold text-on-surface focus:outline-none"
+                                        required
+                                    />
+                                </div>
+                            </div>
+
+                            { /* Payment Method */}
+                            <div className="mb-10">
+                                <p className="label-md uppercase tracking-widest text-on-surface-variant mb-4 font-semibold">{donation.methodLabel}</p>
+                                <div className="flex flex-wrap gap-4">
+                                    {donation.methods.map((method, index) => (
+                                        <div
+                                            key={index}
+                                            onClick={() => setSelectedMethod(method.label)}
+                                            className={`flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300 cursor-pointer ${selectedMethod === method.label ? 'border-primary bg-primary/5 text-primary' : 'border-outline-variant hover:bg-surface-container text-on-surface-variant'}`}
+                                        >
+                                            <DynamicIcon name={method.icon} className="w-5 h-5" />
+                                            <span className="font-medium">{method.label}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            { /* Feedback Message */}
+                            {message.text && (
+                                <div className={`mb-6 p-4 rounded-xl text-center font-medium animate-in zoom-in duration-300 ${message.type === 'success' ? 'bg-green-100 text-green-700 border border-green-200' : 'bg-red-100 text-red-700 border border-red-200'}`}>
+                                    {message.text}
+                                </div>
+                            )}
+
+                            <button
+                                type="submit"
+                                disabled={isLoading}
+                                className={`w-full bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 rounded-2xl text-xl font-bold shadow-xl shadow-primary/20 flex items-center justify-center gap-3 group transition-all duration-300 ${isLoading ? 'opacity-70 cursor-not-allowed' : 'hover:scale-[1.01] active:scale-[0.99]'}`}
+                            >
+                                {isLoading ? (
+                                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                ) : (
+                                    <>
+                                        {donation.buttonText}
+                                        <DynamicIcon name={donation.buttonIcon} className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                                    </>
+                                )}
+                            </button>
+                        </form>
                     </div>
+
                     { /* History Summary */}
                     <div className="bg-surface-container-high/50 p-8 rounded-3xl backdrop-blur-sm border border-white/20">
                         <h3 className="font-headline text-2xl text-primary mb-6">{donation.historyTitle}</h3>

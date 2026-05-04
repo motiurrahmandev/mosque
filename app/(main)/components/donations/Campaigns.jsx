@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 
 function Campaigns() {
@@ -32,7 +34,12 @@ function Campaigns() {
                                 <div className="h-full bg-secondary w-3/4 rounded-full" />
                             </div>
                         </div>
-                        <button className="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">অনুদান দিন</button>
+                        <button
+                            onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors"
+                        >
+                            অনুদান দিন
+                        </button>
                     </div>
                 </div>
                 { /* Campaign 2 */}
@@ -53,7 +60,12 @@ function Campaigns() {
                                 <div className="h-full bg-secondary w-[49%] rounded-full" />
                             </div>
                         </div>
-                        <button className="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors">অনুদান দিন</button>
+                        <button
+                            onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="w-full py-3 rounded-xl border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-colors"
+                        >
+                            অনুদান দিন
+                        </button>
                     </div>
                 </div>
                 { /* Campaign 3 */}
