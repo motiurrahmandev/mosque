@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import homeData from '../../data/homeData.json'
 import DynamicIcon from '../ui/DynamicIcon'
 // import { createDonation } from '../../actions/donationActions'
-import { createDonation } from '@/app/actions/donationActions';
+import { createDonation, getDonations } from '@/app/actions/donationActions';
 
-function DonationHub() {
+function DonationHub({ selectedCampaign }) {
     const { donation } = homeData;
 
     // State for form fields
@@ -19,6 +19,27 @@ function DonationHub() {
     // UI State
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ type: '', text: '' });
+
+    // Recent Donors History
+    const [recentDonors, setRecentDonors] = useState([]);
+
+    useEffect(() => {
+        fetchRecentDonors();
+    }, []);
+
+    const fetchRecentDonors = async () => {
+        const result = await getDonations();
+        if (result.success) {
+            setRecentDonors(result.data.slice(0, 3));
+        }
+    };
+
+    // Sync selected campaign from parent
+    useEffect(() => {
+        if (selectedCampaign) {
+            setSelectedType(selectedCampaign);
+        }
+    }, [selectedCampaign]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -52,6 +73,7 @@ function DonationHub() {
 
         if (result.success) {
             setMessage({ type: 'success', text: result.message });
+            fetchRecentDonors(); // Refresh history
             // Reset form
             setDonorName('');
             setDonorEmail('');
@@ -85,6 +107,16 @@ function DonationHub() {
                                         <span className="font-bold">{type.label}</span>
                                     </button>
                                 ))}
+                                
+                                {selectedType && !donation.types.some(t => t.label === selectedType) && (
+                                    <button
+                                        type="button"
+                                        className="col-span-2 flex items-center justify-center p-4 rounded-2xl border-2 border-secondary bg-secondary-fixed/10 text-on-secondary-fixed-variant transition-all duration-300"
+                                    >
+                                        <DynamicIcon name="campaign" className="w-6 h-6 mr-3" />
+                                        <span className="font-bold">ক্যাম্পেইন: {selectedType}</span>
+                                    </button>
+                                )}
                             </div>
 
                             { /* Donor Info */}
@@ -174,18 +206,26 @@ function DonationHub() {
                     <div className="bg-surface-container-high/50 p-8 rounded-3xl backdrop-blur-sm border border-white/20">
                         <h3 className="font-headline text-2xl text-primary mb-6">{donation.historyTitle}</h3>
                         <div className="space-y-6">
-                            {donation.history.map((item, index) => (
-                                <div key={index} className="flex gap-4 items-start">
-                                    <div className="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center flex-shrink-0">
-                                        <DynamicIcon name={item.icon} className="w-6 h-6 text-primary" />
+                            {recentDonors.length > 0 ? (
+                                recentDonors.map((item, index) => (
+                                    <div key={item._id} className="flex gap-4 items-start animate-in fade-in slide-in-from-right-4 duration-500" style={{ animationDelay: `${index * 150}ms` }}>
+                                        <div className="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center flex-shrink-0">
+                                            <DynamicIcon name="history" className="w-6 h-6 text-primary" />
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-on-surface">{item.name}</p>
+                                            <p className="text-sm text-on-surface-variant line-clamp-2">
+                                                {item.category} খাতে ৳{item.amount.toLocaleString()} দান করেছেন
+                                            </p>
+                                            <p className="text-xs text-outline mt-1">
+                                                {new Date(item.createdAt).toLocaleDateString('bn-BD', { day: 'numeric', month: 'long' })}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-bold text-on-surface">{item.name}</p>
-                                        <p className="text-sm text-on-surface-variant">{item.detail}</p>
-                                        <p className="text-xs text-outline mt-1">{item.time}</p>
-                                    </div>
-                                </div>
-                            ))}
+                                ))
+                            ) : (
+                                <p className="text-sm text-on-surface-variant italic">কোনো সাম্প্রতিক অবদান পাওয়া যায়নি</p>
+                            )}
                         </div>
                         <div className="mt-10 p-6 bg-secondary-container rounded-2xl">
                             <p className="font-headline text-lg text-on-secondary-container mb-2">{donation.pledge.title}</p>
